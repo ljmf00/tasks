@@ -1,7 +1,10 @@
 summary: Add 'Differential Revision' trailer to the patches
 notes: ""
-tags: []
-project: ""
+tags:
+- demangler
+- llvm
+- saoc
+project: saoc2021
 priority: P2
 delegatedto: ""
 subtasks: []
