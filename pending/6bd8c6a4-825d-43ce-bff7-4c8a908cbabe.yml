@@ -1,0 +1,12 @@
+summary: 'fix libiberty: d-demangle: remove parenthesis where it is not needed'
+notes: ""
+tags:
+- gcc
+project: saoc2021
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-10-12T14:52:50.871976527+01:00
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
