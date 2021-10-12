@@ -1,0 +1,13 @@
+summary: 'Fix #13715: Weird prompt buffer behavior in neovim but not in vim'
+notes: ""
+tags:
+- github
+- neovim
+project: ""
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-10-12T03:55:06.449139021+01:00
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
