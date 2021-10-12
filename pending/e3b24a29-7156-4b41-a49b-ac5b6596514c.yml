@@ -1,4 +1,4 @@
-summary: 'resubmit malformed patch: use appendc for single chars append'
+summary: 'resubmit malformed patch: use appendc for single chars append and add changelog'
 notes: ""
 tags:
 - gcc
