@@ -1,4 +1,4 @@
-summary: '_D8demangle4testFYv should report "demangle.test(, ...)" as currently not distinguishable from '
+summary: _D8demangle4testFYv should report "demangle.test(, ...)" as currently not distinguishable from `_D8demangle4testFXv`
 notes: ""
 tags:
 - gcc
