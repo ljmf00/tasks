@@ -1,0 +1,12 @@
+summary: add changelog entries to all the submitted patches
+notes: ""
+tags:
+- gcc
+project: saoc2021
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-10-12T01:59:54.068249786+01:00
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
