@@ -1,0 +1,13 @@
+summary: 'usermod: fix segmentation fault on invalid expiration dates'
+notes: ""
+tags:
+- github
+- shadow
+project: ""
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-10-12T03:54:30.076647817+01:00
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
