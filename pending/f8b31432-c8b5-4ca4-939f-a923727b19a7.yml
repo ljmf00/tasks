@@ -1,0 +1,12 @@
+summary: 'Implement DIP1029: Add throw as Function Attribute'
+notes: ""
+tags:
+- github
+project: ""
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-10-12T03:54:09.920852831+01:00
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
