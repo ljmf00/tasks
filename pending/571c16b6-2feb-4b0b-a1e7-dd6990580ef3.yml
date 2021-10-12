@@ -1,0 +1,12 @@
+summary: Tuple!() should be tuple()
+notes: ""
+tags:
+- gcc
+project: saoc2021
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-10-12T01:57:45.043855865+01:00
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
