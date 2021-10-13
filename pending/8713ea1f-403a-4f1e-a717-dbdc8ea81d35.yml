@@ -1,6 +1,10 @@
 summary: |
   Add test case for function literals
-notes: ""
+notes: |
+  ```
+  _D8demangle__T3abcS_DQt10__lambda13FNaNbNiNfZiZQBhFZi
+  demangle.abc!(demangle.__lambda13()).abc()
+  ```
 tags:
 - gcc
 project: saoc2021
