@@ -1,5 +1,24 @@
 summary: Add post for 4th week
-notes: ""
+notes: |
+  LLVM split patch list:
+
+  - https://reviews.llvm.org/D111414
+  - https://reviews.llvm.org/D111415
+  - https://reviews.llvm.org/D111416
+  - https://reviews.llvm.org/D111417
+  - https://reviews.llvm.org/D111419
+  - https://reviews.llvm.org/D111420
+  - https://reviews.llvm.org/D111421
+  - https://reviews.llvm.org/D111422
+  - https://reviews.llvm.org/D111423
+  - https://reviews.llvm.org/D111424
+  - https://reviews.llvm.org/D111425
+  - https://reviews.llvm.org/D111426
+  - https://reviews.llvm.org/D111428
+  - https://reviews.llvm.org/D111429
+  - https://reviews.llvm.org/D111430
+  - https://reviews.llvm.org/D111431
+  - https://reviews.llvm.org/D111432
 tags:
 - community
 project: saoc2021
