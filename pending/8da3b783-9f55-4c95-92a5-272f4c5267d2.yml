@@ -20,7 +20,14 @@ notes: |+
   - https://reviews.llvm.org/D111431
   - https://reviews.llvm.org/D111432
 
-  Generically answered previously submitted patches and resubmit some
+  ## GCC Patches
+
+  - Usage of distinguishable tuple(), instead of wrong templated Tuple!():
+    https://gcc.gnu.org/pipermail/gcc-patches/2021-October/581577.html
+  - Write distinguishable variadics and add missing tests to the test suite:
+    https://gcc.gnu.org/pipermail/gcc-patches/2021-October/581574.html
+
+  I also generically answered previously submitted patches and resubmit some
   malformed/wrong patches.
 
   ## Announcement on llvm-dev mailing list
