@@ -1,6 +1,6 @@
 summary: Add post for 4th week
-notes: |
-  LLVM split patch list:
+notes: |+
+  ## LLVM split patch list
 
   - https://reviews.llvm.org/D111414
   - https://reviews.llvm.org/D111415
@@ -19,6 +19,24 @@ notes: |
   - https://reviews.llvm.org/D111430
   - https://reviews.llvm.org/D111431
   - https://reviews.llvm.org/D111432
+
+  Generically answered previously submitted patches and resubmit some
+  malformed/wrong patches.
+
+  ## Announcement on llvm-dev mailing list
+
+  https://lists.llvm.org/pipermail/llvm-dev/2021-October/153267.html
+
+  ## Minor changes on bugzilla
+
+  - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102702
+
+  Since Eric Gallager added me to CC list for various fuzzing issues to GCC
+  demangler, I decided to create an issue about the time complexity problem,
+  https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102732 , similar to what was
+  reported by c++ demangler (https://gcc.gnu.org/bugzilla/show_bug.cgi?id=80002)
+  .
+
 tags:
 - community
 project: saoc2021
