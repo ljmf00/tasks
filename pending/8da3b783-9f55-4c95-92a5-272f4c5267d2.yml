@@ -26,6 +26,8 @@ notes: |+
     https://gcc.gnu.org/pipermail/gcc-patches/2021-October/581577.html
   - Write distinguishable variadics and add missing tests to the test suite:
     https://gcc.gnu.org/pipermail/gcc-patches/2021-October/581574.html
+  - Add test cases for missing coverage tests:
+    https://gcc.gnu.org/pipermail/gcc-patches/2021-October/581588.html
 
   I also generically answered previously submitted patches and resubmit some
   malformed/wrong patches.
