@@ -1,5 +1,9 @@
 summary: Add test cases for simple special mangles (end with Z)
-notes: ""
+notes: |
+  ```
+  {"_D8demangleZ", "demangle"},
+  {"_D8demangle4testZ", "demangle.test"},
+  ```
 tags:
 - gcc
 project: saoc2021
