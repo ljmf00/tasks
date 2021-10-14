@@ -1,0 +1,123 @@
+name: build
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  website:
+    runs-on: ubuntu-latest
+    container: archlinux
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        # FIXME: This is ugly as hell. Preferable a properly built docker
+        run: |
+          pacman -Syu --noconfirm base-devel sudo git
+          /usr/sbin/groupadd --system sudo && \
+          /usr/sbin/useradd -m --groups sudo user && \
+          /usr/sbin/sed -i -e "s/Defaults    requiretty.*/ #Defaults    requiretty/g" /etc/sudoers && \
+          /usr/sbin/echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+          (cd /tmp && \
+          curl https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay-bin -o PKGBUILD && \
+          sudo -u user makepkg -sic --noprogressbar --noconfirm && \
+          rm -rf PKGBUILD yay* )
+          sudo -u user yay -S --noconfirm dstask aha npm
+      - name: Build website
+        run: |
+          git clone https://github.com/ljmf00/tasks/ $HOME/.dstask/
+          ./generate-html.sh
+      - name: Archive artifact folder
+        run: tar -cvf public.tar public
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: public-build
+          path: public.tar
+          if-no-files-found: error
+  ipfs-car:
+    runs-on: ubuntu-latest
+    container: node:16.10.0-alpine3.11
+    needs: website
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download the build artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: public-build
+      - name: Install dependencies
+        run: |
+          apk add make
+      - name: Extract artifact
+        run: tar -xvf public.tar
+      - name: Pack CAR file
+        run: |
+          npx ipfs-car --pack public/ --output public.car
+          npx ipfs-car --list-roots public.car > public.car.cid
+      - name: Upload CAR Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: public-car-build
+          path: public.car
+      - name: Upload CAR CID Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: public-car-cid
+          path: public.car.cid
+  ipfs-push:
+    runs-on: ubuntu-latest
+    container: alpine:3.14.2
+    needs: website
+    # if: github.ref == 'refs/heads/master'
+    steps:
+      - name: Download the build artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: public-build
+      - name: Extract artifact
+        run: tar -xvf public.tar
+      - name: Push to IPFS public nodes
+        uses: aquiladev/ipfs-action@v0.1.6
+        with:
+          path: ./public/
+        continue-on-error: true
+  web3-storage:
+    runs-on: ubuntu-latest
+    container: alpine:3.14.2
+    needs: website
+    # if: github.ref == 'refs/heads/master'
+    outputs:
+      cid: ${{ steps.web3.outputs.cid }}
+    steps:
+      - name: Download the build artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: public-build
+      - name: Extract artifact
+        run: tar -xvf public.tar
+      - name: Add public CAR file
+        uses: web3-storage/add-to-web3@v1
+        id: web3
+        with:
+          web3_token: ${{ secrets.WEB3_STORAGE_TOKEN }}
+          path_to_add: 'public'
+  cloudflare-txt:
+    runs-on: ubuntu-latest
+    container: alpine:3.14.2
+    needs: web3-storage
+    # if: github.ref == 'refs/heads/master'
+    steps:
+      - name: Install dependencies
+        run: |
+          apk add curl
+      - name: Update TXT Record
+        run: |
+          curl -X PUT "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE }}/dns_records/${{ secrets.CLOUDFLARE_DNS_RECORD_ID }}" \
+           -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_TOKEN }}" \
+           -H "Content-Type: application/json" \
+           --data '{"type":"TXT","name":"_dnslink.tasks","content":"dnslink=/ipfs/${{needs.web3-storage.outputs.cid}}","ttl":1}' > /dev/null 2>&1
