@@ -1,5 +1,5 @@
 summary: Write an efficient tokenizer
-notes: ""
+notes: "Efficient Tokenizer \n\n```d\n\n@ConstantToken(\"select\", \"SELECT\")\n@ConstantToken(\"lparen\", '(')\nmixin makeTokenizer!();\n\n"
 tags:
 - parsercombinators
 project: personal
