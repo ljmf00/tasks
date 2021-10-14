@@ -1,0 +1,12 @@
+summary: fix colour key to be consitent with all help pages
+notes: ""
+tags:
+- dstask
+project: contrib
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-10-14T18:53:37.14927518+01:00
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
