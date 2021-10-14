@@ -1,0 +1,12 @@
+summary: build autopsy package from scratch and update it
+notes: ""
+tags:
+- aur
+project: archlinux
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-10-14T04:27:47.527661067+01:00
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
