@@ -1,0 +1,13 @@
+summary: |
+  GH/ljmf00/dotfiles/#14 Make home folder temporary inside docker container until first run
+notes: ""
+tags:
+- github
+project: personal
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-10-14T20:21:15.974325686+01:00
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
