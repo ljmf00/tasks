@@ -3,7 +3,7 @@ notes: ""
 tags:
 - web3storage
 project: ipfs
-priority: P2
+priority: P1
 delegatedto: ""
 subtasks: []
 dependencies: []
