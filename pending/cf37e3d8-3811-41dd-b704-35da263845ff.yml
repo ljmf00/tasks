@@ -1,0 +1,12 @@
+summary: Fix sumtype safety PR proposal using new __trait
+notes: ""
+tags:
+- dlang
+project: contrib
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-10-14T04:33:54.758959563+01:00
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
