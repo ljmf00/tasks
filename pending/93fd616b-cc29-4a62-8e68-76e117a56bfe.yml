@@ -1,0 +1,12 @@
+summary: add custom commit messages for auto updater
+notes: ""
+tags:
+- precommit
+project: personal
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-10-14T04:26:09.763598389+01:00
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
