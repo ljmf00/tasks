@@ -4,7 +4,7 @@ tags:
 - github
 - neovim
 project: contrib
-priority: P2
+priority: P1
 delegatedto: ""
 subtasks: []
 dependencies: []
