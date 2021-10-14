@@ -1,0 +1,12 @@
+summary: 'fix patch for issue #13715'
+notes: ""
+tags:
+- neovim
+project: contrib
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-10-14T04:33:19.044764027+01:00
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
