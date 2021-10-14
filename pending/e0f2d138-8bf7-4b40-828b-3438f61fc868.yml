@@ -1,5 +1,9 @@
 summary: Add help page to public index
-notes: ""
+notes: |
+  # What to include?
+
+  - dstask version
+  - dstask tasks legend (started, pending, priority colors, ...)
 tags:
 - tasks
 project: personal
