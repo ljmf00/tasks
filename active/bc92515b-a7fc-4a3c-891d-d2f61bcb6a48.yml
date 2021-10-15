@@ -1,5 +1,7 @@
 summary: Rename OutputStream to accommodate preppending and add patch to the stack
-notes: ""
+notes: |
+  ./libcxxabi/src/demangle/Utility.h:27:1:class OutputStream
+  ./llvm/include/llvm/Demangle/Utility.h:27:1:class OutputStream
 tags:
 - llvm
 project: saoc2021
