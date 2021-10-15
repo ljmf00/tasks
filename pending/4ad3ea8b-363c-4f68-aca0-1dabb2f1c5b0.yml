@@ -1,0 +1,12 @@
+summary: Remove else-after-return(s)
+notes: ""
+tags:
+- llvm
+project: saoc2021
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-10-15T19:21:33.444301086+01:00
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
