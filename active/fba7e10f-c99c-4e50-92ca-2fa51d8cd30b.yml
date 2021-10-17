@@ -1,5 +1,129 @@
 summary: Create milestone 1 report
-notes: ""
+notes: |
+  # SAOC LLDB D integration: 1st Milestone
+
+  Hi SAOC Judge Team,
+
+  I'm here to report what I've done during the 1st Milestone on the Symmetry
+  Autumn of Code. You can consult the milestones
+  [here](https://lsferreira.net/public/assets/posts/d-saoc-2021-01/milestones.md).
+
+  ## Summary
+  ### Weekly updates
+
+  You can find my weekly updates either on the forum or on my blog:
+  - Week 1:
+    [https://forum.dlang.org/post/mailman.437.1632358782.21945.digitalmars-d@puremagic.com](forum)
+    | [https://lsferreira.net/posts/d-saoc-2021-01](blog)
+  - Week 2:
+    [https://forum.dlang.org/post/mailman.556.1633047753.21945.digitalmars-d@puremagic.com](forum)
+    | [https://lsferreira.net/posts/d-saoc-2021-02](blog)
+  - Week 3:
+    [https://forum.dlang.org/post/mailman.649.1633575050.21945.digitalmars-d@puremagic.com](forum)
+    | [https://lsferreira.net/posts/d-saoc-2021-03](blog)
+  - Week 4:
+    [https://forum.dlang.org/post/mailman.437.1632358782.21945.digitalmars-d@puremagic.com](forum)
+    | [https://lsferreira.net/posts/d-saoc-2021-04](blog)
+
+  ### Patches / Bugs / Mailing list threads
+
+  - https://gcc.gnu.org/pipermail/gcc-patches/2021-September/579985.html
+  - https://gcc.gnu.org/pipermail/gcc-patches/2021-September/579987.html
+  - https://reviews.llvm.org/D110578
+  - https://reviews.llvm.org/D110576
+  - https://reviews.llvm.org/D110577
+  - https://gcc.gnu.org/pipermail/gcc-patches/2021-September/580512.html
+  - https://gcc.gnu.org/pipermail/gcc-patches/2021-September/580525.html
+  - https://gcc.gnu.org/pipermail/gcc-patches/2021-September/580542.html
+  - https://gcc.gnu.org/pipermail/gcc-patches/2021-September/580545.html
+  - https://gcc.gnu.org/pipermail/gcc-patches/2021-September/580544.html
+  - https://gcc.gnu.org/pipermail/gcc/2021-September/237442.html
+  - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102618
+  - https://github.com/dlang/dmd/pull/13120
+  - https://reviews.llvm.org/D111414
+  - https://reviews.llvm.org/D111415
+  - https://reviews.llvm.org/D111416
+  - https://reviews.llvm.org/D111417
+  - https://reviews.llvm.org/D111419
+  - https://reviews.llvm.org/D111420
+  - https://reviews.llvm.org/D111421
+  - https://reviews.llvm.org/D111422
+  - https://reviews.llvm.org/D111423
+  - https://reviews.llvm.org/D111424
+  - https://reviews.llvm.org/D111425
+  - https://reviews.llvm.org/D111426
+  - https://reviews.llvm.org/D111428
+  - https://reviews.llvm.org/D111429
+  - https://reviews.llvm.org/D111430
+  - https://reviews.llvm.org/D111431
+  - https://reviews.llvm.org/D111432
+  - https://gcc.gnu.org/pipermail/gcc-patches/2021-October/581577.html
+  - https://gcc.gnu.org/pipermail/gcc-patches/2021-October/581574.html
+  - https://gcc.gnu.org/pipermail/gcc-patches/2021-October/581588.html
+  - https://gcc.gnu.org/pipermail/gcc-patches/2021-October/581590.html
+  - https://lists.llvm.org/pipermail/llvm-dev/2021-October/153267.html
+  - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102702
+  - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=102732
+
+  - https://reviews.llvm.org/D111947 (not yet published to the weekly updates)
+  - https://reviews.llvm.org/D111948 (not yet published to the weekly updates)
+
+  ## Description
+
+  During the preliminaries of SAOC kickoff, I started developing a simple helper
+  library called `liblldbd` that I thought might help, to prevent wasting time if
+  the first option was not viable. Thankfully, during the course of this
+  milestone, that was not required. This was a very simple helper library,
+  although the source code is available
+  [here](https://github.com/ljmf00/liblldbd).
+
+  This month I pretty much covered the port of libiberty demangler, following the
+  first option of the milestones. The change was fairly straightforward to plug
+  in into the LLVM codebase.
+
+  During the first week, I mostly worked on porting the `libiberty` logic to LLVM
+  and testing the port extensively. I ended up finding a vulnerability on the GCC
+  demangler by doing fuzzy testing. I discussed more extensively the
+  vulnerability on the weekly post, so check that out for more context. To give
+  some status, this is being cooperatively handled by Red Hat Security Team and
+  they assigned a [CVE
+  entry](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3826) for this.
+
+  I had the LLDB integration working on the first week, with some minor changes
+  that I covered on the second week, although to upstream the changes, a lot of
+  work needed to be made since the code was in C and the LLVM codebase is all in
+  C++.
+
+  I started rewriting the code to be more C++ish that ended up occupying pretty
+  much the whole week due to the dimension of the demangler codebase. In the
+  meanwhile, and during this milestone, I found some things to improve, most of
+  them a bit minor, but I thought they could be positive and submitted patches
+  whenever I see fit.
+
+  After that, I sent the full patch to the LLVM review platform, although the
+  reviewers thought that would be better to split the patch into small
+  independent patches. Even though this delayed the whole milestone to be fully
+  upstreamed, I understand that this is desirable for a better understanding of
+  every piece. I saw this as a bit unproductive, but I strived to push this
+  forward and started working on the split right away.
+
+  The split ended up occupying my time for the third and fourth week with
+  constant changes requested by the reviewers. A long discussion about how things
+  got implemented was also raised and two more patches have emerged recently.
+
+  In case you want to see the patches stacked up you can try my LLVM fork
+  [here](https://github.com/ljmf00/llvm-project). Instructions can be found on
+  the first week post. Please note that the latest branch suffers some changes
+  and might not compile successfully. Please consider using the non-split
+  version.
+
+  My GCC tree is also available [here](https://github.com/ljmf00/gcc).
+
+  ## Conclusion
+
+  In terms of what the first milestone covered, I think I got everything in
+  place, except actually upstreaming the changes. This is a thing that is still
+  in progress and I'm striving for this to go forward as much as I can.
 tags:
 - report
 project: saoc2021
