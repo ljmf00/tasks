@@ -8,6 +8,13 @@ notes: |
   - LDC generates artificial DWARF variables and don't properly mark then as
     `DW_AT_artificial`.
 
+  ## Types
+
+  - GDC produces an error on LLDB:
+    ```
+    error: need to add support for DW_TAG_base_type 'dchar' encoded with DW_ATE = 0x8, bit_size = 32
+    ```
+
   ## Arrays
 
   - No D compiler generates correct DWARF tags to represent dynamic arrays. They
