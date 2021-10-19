@@ -1,5 +1,48 @@
 summary: investigate compiler-specific DWARF generation
-notes: ""
+notes: |
+  # DWARF Generation on D compilers
+
+  - DMD lacks information about `DW_AT_decl_file`, `DW_AT_decl_line` and
+    `DW_AT_decl_column` on some tags.
+  - LDC lacks information about `DW_AT_decl_column`.
+  - LDC generates artificial DWARF variables and don't properly mark then as
+    `DW_AT_artificial`.
+
+  ## Arrays
+
+  - No D compiler generates correct DWARF tags to represent dynamic arrays. They
+    should use `DW_TAG_array_type` with `DW_TAG_subrange_type` and reference the
+    size of it using `DW_AT_count`/`DW_AT_upper_bound` variable address or
+    manually dereference a stack register, containing the size. This approach is
+    used by C compilers when dealing with VLAs.
+
+  ### Normal Arrays
+
+  - Every D compiler except DMD handles normal array type names with fully
+    qualified names. I already pushed a fix to this.
+  - Every D compiler writes array DWARF information as a struct with length and
+    ptr fields.
+
+  - No D compiler generates special DWARF tags when dealing with string arrays.
+
+  ### Associative Arrays
+
+  - DMD has a bug for associative arrays with array types, reporting the wrong
+    type in the name.
+
+    For an `int[string]` it reports `_AArray_ucent_int` For an `string[int]` it
+    reports `_AArray_int_ucent`
+
+  - Every D compiler except DMD handles associative array types with fully
+    qualified names.
+
+  - Associative array struct is not accessible on any D compiler
+
+  ### Interfaces
+
+  - GDC uses `DW_TAG_interface_type` tags including `DW_AT_containing_type`
+    pointing to themselves as part of GNU extensions to DWARF, triggering an
+    error on LLDB. This tag is not part of the DWARF structure for interfaces.
 tags:
 - dwarf
 project: saoc2021
