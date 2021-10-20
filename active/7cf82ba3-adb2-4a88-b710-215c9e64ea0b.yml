@@ -15,6 +15,9 @@ notes: |
     error: need to add support for DW_TAG_base_type 'dchar' encoded with DW_ATE = 0x8, bit_size = 32
     ```
 
+  - DMD for some reason, unknown to my current compiler knowledge, is generating
+    `_Bool` type name for `bool` types.
+
   ## Enumerations
 
   - DMD has a bug with `DW_TAG_enumerator`. Currently that information is not
