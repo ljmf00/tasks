@@ -15,6 +15,11 @@ notes: |
     error: need to add support for DW_TAG_base_type 'dchar' encoded with DW_ATE = 0x8, bit_size = 32
     ```
 
+  ## Enumerations
+
+  - DMD has a bug with `DW_TAG_enumerator`. Currently that information is not
+    being generated.
+
   ## Arrays
 
   - No D compiler generates correct DWARF tags to represent dynamic arrays. They
