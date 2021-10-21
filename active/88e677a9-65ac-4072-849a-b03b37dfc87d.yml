@@ -79,6 +79,9 @@ notes: |
   on the LLDB integration, since that is what the milestone is focused on. I'm
   going to clean up the idea I have of the language plugin and hopefully show
   some interesting practical results.
+
+  You can also read this on my blog,
+  [here](https://lsferreira.net/posts/d-saoc-2021-05).
 tags:
 - community
 project: saoc2021
