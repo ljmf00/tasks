@@ -1,5 +1,9 @@
 summary: Include non-IPFS static content on the static repository
-notes: ""
+notes: |
+  Including:
+
+  - edit-todo slit list
+  - dwarf gist note
 tags:
 - blog
 project: personal
