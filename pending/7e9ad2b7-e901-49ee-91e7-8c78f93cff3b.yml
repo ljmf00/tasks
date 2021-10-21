@@ -1,0 +1,12 @@
+summary: DW_AT_decl_line should report 32bit on the DWARF info
+notes: ""
+tags:
+- dmd
+project: saoc2021
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-10-21T20:10:39.485461687+01:00
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
