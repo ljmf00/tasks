@@ -1,0 +1,12 @@
+summary: Include non-IPFS static content on the static repository
+notes: ""
+tags:
+- blog
+project: personal
+priority: P1
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-10-21T02:38:50.201161891+01:00
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
