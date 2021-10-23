@@ -1,0 +1,13 @@
+summary: Add a TypeSystem for D
+notes: ""
+tags:
+- lldb
+- llvm
+project: saoc2021
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-10-24T00:23:50.41695328+01:00
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
