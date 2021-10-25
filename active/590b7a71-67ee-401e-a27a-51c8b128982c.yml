@@ -1,5 +1,26 @@
 summary: Write to the mailing list about the D plugin
-notes: ""
+notes: |
+  Hi llvm-dev,
+
+  I'm writing here to discuss the addition of D language plugin to LLDB.
+  Following the issue #52223 from Bugzilla, we are currently using C/C++ language
+  plugin for D. This project is part of the Symmetry Autumn of Code 2021, which
+  proposes to implement better integration for D into LLDB.
+
+  This project is a highly requested feature for D developers who use Apple-based
+  devices since configuring GDB requires extra configuration and self signing
+  binaries.
+
+  One possible solution is to write a plugin using the Python public API,
+  although it has some limitations, since, AFAIK, custom expressions are not
+  currently well supported.
+
+  More context about the project milestones can be found
+  [here](lsferreira.net/public/assets/posts/d-saoc-2021-01/milestones.md).
+
+  I would like to discuss the possibility of upstreaming the plugin in C++ to the
+  official tree and if there is anything in the roadmap to support custom
+  expressions via Python.
 tags:
 - llvm
 project: saoc2021
