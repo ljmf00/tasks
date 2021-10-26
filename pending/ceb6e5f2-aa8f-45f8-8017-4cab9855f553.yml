@@ -1,0 +1,12 @@
+summary: Add support for DW_TAG_immutable_type
+notes: ""
+tags:
+- llvm
+project: saoc2021
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-10-26T17:56:04.729309151+01:00
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
