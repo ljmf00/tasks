@@ -1,0 +1,12 @@
+summary: Add a firewall and setup a VPN
+notes: ""
+tags:
+- infrastructure
+project: personal
+priority: P0
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-10-28T00:44:22.690043452+01:00
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
