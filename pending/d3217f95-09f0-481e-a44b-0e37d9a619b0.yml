@@ -1,0 +1,12 @@
+summary: make DW_FORM_flag flags as optional as possible to reduce binary size
+notes: ""
+tags:
+- dmd
+project: contrib
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-10-28T23:02:37.671503514+01:00
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
