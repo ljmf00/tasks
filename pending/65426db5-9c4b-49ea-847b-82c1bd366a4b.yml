@@ -1,6 +1,7 @@
 summary: Running automated jobs and test against ASAN and UBSAN
 notes: ""
 tags:
+- dlang
 - dmd
 project: contrib
 priority: P2
