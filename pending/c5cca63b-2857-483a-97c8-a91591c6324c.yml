@@ -1,0 +1,13 @@
+summary: Create issue for dchar missing encoding
+notes: ""
+tags:
+- dlang
+- dmd
+project: saoc2021
+priority: P0
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-11-01T15:31:35.050674278Z
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
