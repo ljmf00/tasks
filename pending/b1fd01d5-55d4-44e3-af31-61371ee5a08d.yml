@@ -1,6 +1,7 @@
 summary: Push remove-useless-at-wchar
 notes: ""
 tags:
+- dlang
 - dmd
 project: saoc2021
 priority: P0
