@@ -1,0 +1,13 @@
+summary: Rename backend types to suite D type names
+notes: ""
+tags:
+- dlang
+- dmd
+project: saoc2021
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-11-01T19:55:20.819890352Z
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
