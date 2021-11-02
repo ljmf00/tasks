@@ -1,0 +1,13 @@
+summary: 'Fix issue #22469'
+notes: ""
+tags:
+- dlang
+- dmd
+project: saoc2021
+priority: P1
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-11-02T01:49:24.094696164Z
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
