@@ -1,5 +1,36 @@
 summary: Answer to Chris
-notes: ""
+notes: |
+  Hi Chris,
+
+  Thanks for reaching out to me about the D111414 patch.
+
+  I would like to note a few things about this change. This particular patch is
+  trivial and required significant changes to conform with the LLVM code style
+  and internal APIs.
+
+  Considering the logic is the same compared to the D ABI official specification
+  (https://dlang.org/spec/abi.html) I think particularly this patch can be
+  merged, although I understand that other changes can be seen differently and
+  debatable. And I mean debatable because the current GNU implementation just
+  follows the specification and deviating from that logic is quite hard.
+
+  I want to note that I'm currently working on an official refactor of the D
+  demangler, so I can perfectly write a clean room implementation if any other
+  possibility is not accepted. As you probably understand, the rationale behind
+  it is because it is time consuming writing a whole new implementation and
+  reusing one is highly desirable.
+
+  As I mentioned in D110576, Iain is the major contributor to this code and
+  according to
+  https://www.gnu.org/prep/maintain/html_node/Legally-Significant.html#Legally-Significant
+  a significant number of changes I mentioned are not eligible. Iain also wrote
+  in the mentioned patch that agrees with the relicensing. The relicensing is
+  possible whenever the original author sees fit.
+
+  If this is not sufficient I can try contacting every contributor and ask for
+  permission to relicense the code to LLVM.
+
+  Since I'm not a lawyer, keep in mind to not take any legal advice from me.
 tags:
 - llvm
 project: saoc2021
