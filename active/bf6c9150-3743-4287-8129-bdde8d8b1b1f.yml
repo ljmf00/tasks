@@ -1,5 +1,16 @@
 summary: Move forward with D111414
-notes: ""
+notes: |
+  wchar_t -> wchar
+  long double -> real
+  _Bool -> bool
+  long long -> long
+  uint long long -> ulong
+  imaginary float -> ifloat
+  imaginary double -> idouble
+  imaginary long double -> ireal
+  complex float -> cfloat
+  complex double -> cdouble
+  complex long double -> creal
 tags:
 - llvm
 project: saoc2021
