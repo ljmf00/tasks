@@ -1,0 +1,13 @@
+summary: 'Take a look at Issue #15747'
+notes: ""
+tags:
+- dlang
+- dmd
+project: saoc2021
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-11-08T15:46:03.84821846Z
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
