@@ -1,0 +1,12 @@
+summary: DW_AT_decl_column DECL is missing on some tags
+notes: ""
+tags:
+- ldc
+project: saoc2021
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-11-08T21:13:16.845686771Z
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
