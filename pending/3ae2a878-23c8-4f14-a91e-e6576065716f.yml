@@ -1,5 +1,10 @@
 summary: DW_AT_decl_column DECL is missing on some tags
-notes: ""
+notes: |
+  - DW_TAG_subprogram
+  - DW_TAG_imported_module
+  - DW_TAG_formal_parameter
+  - DW_TAG_member
+  - DW_TAG_structure_type
 tags:
 - ldc
 project: saoc2021
