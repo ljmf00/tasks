@@ -1,5 +1,49 @@
 summary: Write 2nd milestone report
-notes: ""
+notes: |
+  - https://github.com/dlang/dmd/pull/13196
+  - https://issues.dlang.org/show_bug.cgi?id=22423
+  - https://github.com/dlang/dmd/pull/13200
+  - https://issues.dlang.org/show_bug.cgi?id=22426
+  - https://github.com/dlang/dmd/pull/13202
+  - https://github.com/dlang/dmd/pull/13204
+  - https://bugs.llvm.org/show_bug.cgi?id=52223
+  - https://lists.llvm.org/pipermail/lldb-dev/2021-October/017101.html
+  - https://bugs.llvm.org/show_bug.cgi?id=52324
+  - https://github.com/dlang/dmd/pull/13237
+  - https://issues.dlang.org/show_bug.cgi?id=22450
+  - https://issues.dlang.org/show_bug.cgi?id=22451
+  - https://issues.dlang.org/show_bug.cgi?id=22452
+  - https://github.com/dlang/dmd/pull/13240
+  - https://github.com/dlang/dmd/pull/13239
+  - https://issues.dlang.org/show_bug.cgi?id=22459
+  - https://github.com/dlang/dmd/pull/13241
+  - https://github.com/dlang/dmd/pull/13246
+  - https://github.com/dlang/dmd/pull/13247
+  - https://issues.dlang.org/show_bug.cgi?id=22467
+  - https://issues.dlang.org/show_bug.cgi?id=22468
+  - https://github.com/dlang/dmd/pull/13254
+  - https://issues.dlang.org/show_bug.cgi?id=22469
+  - https://issues.dlang.org/show_bug.cgi?id=22471
+  - https://github.com/dlang/dlang.org/pull/3119
+  - https://github.com/dlang/dmd/pull/13274
+  - https://issues.dlang.org/show_bug.cgi?id=22492
+  - https://issues.dlang.org/show_bug.cgi?id=22493
+  - https://github.com/ldc-developers/ldc/issues/3865
+  - https://github.com/ldc-developers/ldc/issues/3867
+  - https://github.com/ldc-developers/ldc/pull/3866
+  - https://github.com/dlang/dlang.org/pull/3120
+  - https://bugs.llvm.org/show_bug.cgi?id=52471
+  - https://bugs.llvm.org/show_bug.cgi?id=52470
+  - https://github.com/google/oss-fuzz/pull/6811
+  - https://reviews.llvm.org/D112564
+  - https://reviews.llvm.org/D112658
+  - https://reviews.llvm.org/D113604
+  - https://reviews.llvm.org/D113605
+  - https://reviews.llvm.org/D113572
+  - https://reviews.llvm.org/D113631
+  - https://reviews.llvm.org/D113632
+  - https://reviews.llvm.org/D113633
+  - https://reviews.llvm.org/D113634
 tags: []
 project: saoc2021
 priority: P2
