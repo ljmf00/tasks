@@ -1,5 +1,22 @@
 summary: Add SDIV->DIVW instruction lowering to optimize RISC-V codegen
-notes: ""
+notes: |
+  We should optimize from:
+  ```asm
+          lui     a1, 419430
+          addiw   a1, a1, 1639
+          mul     a0, a0, a1
+          srli    a1, a0, 63
+          srai    a0, a0, 33
+          add     a0, a0, a1
+          ret
+  ```
+
+  To:
+  ```asm
+          li      a5,5
+          divw    a0,a0,a5
+          ret
+  ```
 tags:
 - llvm
 - riscv
