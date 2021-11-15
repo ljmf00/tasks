@@ -1,0 +1,13 @@
+summary: Add SDIV->DIVW instruction lowering to optimize RISC-V codegen
+notes: ""
+tags:
+- llvm
+- riscv
+project: contrib
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-11-15T21:58:14.448651563Z
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
