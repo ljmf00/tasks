@@ -1,5 +1,8 @@
 summary: Add crypto donation addresses
-notes: ""
+notes: |
+  Ethereum: 0xafd9719A5f2567C7241Cd538c00db6D48D1f2A91
+  Bitcoin: 1FGksAHXjgCM82HB926fSJuynvDp6XTqGm
+  Stellar: GCEV2SO54FTH4H7X2EUU6R642PM6OT7RTOKZ5XBGKWB7LX7K7ZWMYLFT
 tags:
 - donations
 project: personal
