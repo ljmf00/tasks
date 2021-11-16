@@ -1,0 +1,12 @@
+summary: 'Fix ''Deprecated feature: REMAKE_INITRD'''
+notes: ""
+tags:
+- rts5139
+project: contrib
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-11-16T14:44:13.577944054Z
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
