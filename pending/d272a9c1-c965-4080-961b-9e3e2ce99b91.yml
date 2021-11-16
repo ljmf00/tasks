@@ -3,7 +3,7 @@ notes: ""
 tags:
 - rts5139
 project: contrib
-priority: P2
+priority: P1
 delegatedto: ""
 subtasks: []
 dependencies: []
