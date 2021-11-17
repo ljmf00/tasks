@@ -1,40 +1,65 @@
 summary: Write 2nd milestone report
-notes: |
+notes: |+
+  # SAOC LLDB D integration: 2nd Milestone
+
+  Hi SAOC Judge Team,
+
+  I'm here to report what I've done during the 2nd Milestone on the Symmetry
+  Autumn of Code. You can consult the milestones
+  [here](https://lsferreira.net/public/assets/posts/d-saoc-2021-01/milestones.md).
+
+  ## Summary
+  ### Weekly updates
+  You can find my weekly updates either on the forum or on my blog:
+  - Week 5:
+  [https://forum.dlang.org/thread/mailman.304.1634781356.11670.digitalmars-d@puremagic.com](forum)
+  | [https://lsferreira.net/posts/d-saoc-2021-05](blog)
+  - Week 6:
+  [https://forum.dlang.org/thread/mailman.409.1635399049.11670.digitalmars-d@puremagic.com](forum)
+  | [https://lsferreira.net/posts/d-saoc-2021-06](blog)
+  - Week 7:
+  [https://forum.dlang.org/thread/mailman.559.1636001080.11670.digitalmars-d@puremagic.com](forum)
+  | [https://lsferreira.net/posts/d-saoc-2021-07](blog)
+  - Week 8:
+  [https://forum.dlang.org/thread/mailman.742.1636647666.11670.digitalmars-d@puremagic.com](forum)
+  | [https://lsferreira.net/posts/d-saoc-2021-08](blog)
+
+  ### Patches / Bugs / Mailing list threads
+
   - https://github.com/dlang/dmd/pull/13196
-  - https://issues.dlang.org/show_bug.cgi?id=22423
   - https://github.com/dlang/dmd/pull/13200
-  - https://issues.dlang.org/show_bug.cgi?id=22426
   - https://github.com/dlang/dmd/pull/13202
   - https://github.com/dlang/dmd/pull/13204
-  - https://bugs.llvm.org/show_bug.cgi?id=52223
-  - https://lists.llvm.org/pipermail/lldb-dev/2021-October/017101.html
-  - https://bugs.llvm.org/show_bug.cgi?id=52324
   - https://github.com/dlang/dmd/pull/13237
-  - https://issues.dlang.org/show_bug.cgi?id=22450
-  - https://issues.dlang.org/show_bug.cgi?id=22451
-  - https://issues.dlang.org/show_bug.cgi?id=22452
   - https://github.com/dlang/dmd/pull/13240
   - https://github.com/dlang/dmd/pull/13239
-  - https://issues.dlang.org/show_bug.cgi?id=22459
   - https://github.com/dlang/dmd/pull/13241
   - https://github.com/dlang/dmd/pull/13246
   - https://github.com/dlang/dmd/pull/13247
+  - https://github.com/dlang/dmd/pull/13254
+  - https://github.com/dlang/dmd/pull/13274
+  - https://issues.dlang.org/show_bug.cgi?id=22423
+  - https://issues.dlang.org/show_bug.cgi?id=22426
+  - https://issues.dlang.org/show_bug.cgi?id=22450
+  - https://issues.dlang.org/show_bug.cgi?id=22451
+  - https://issues.dlang.org/show_bug.cgi?id=22452
+  - https://issues.dlang.org/show_bug.cgi?id=22459
   - https://issues.dlang.org/show_bug.cgi?id=22467
   - https://issues.dlang.org/show_bug.cgi?id=22468
-  - https://github.com/dlang/dmd/pull/13254
   - https://issues.dlang.org/show_bug.cgi?id=22469
   - https://issues.dlang.org/show_bug.cgi?id=22471
-  - https://github.com/dlang/dlang.org/pull/3119
-  - https://github.com/dlang/dmd/pull/13274
   - https://issues.dlang.org/show_bug.cgi?id=22492
   - https://issues.dlang.org/show_bug.cgi?id=22493
   - https://github.com/ldc-developers/ldc/issues/3865
   - https://github.com/ldc-developers/ldc/issues/3867
   - https://github.com/ldc-developers/ldc/pull/3866
+  - https://github.com/dlang/dlang.org/pull/3119
   - https://github.com/dlang/dlang.org/pull/3120
+  - https://lists.llvm.org/pipermail/lldb-dev/2021-October/017101.html
+  - https://bugs.llvm.org/show_bug.cgi?id=52223
+  - https://bugs.llvm.org/show_bug.cgi?id=52324
   - https://bugs.llvm.org/show_bug.cgi?id=52471
   - https://bugs.llvm.org/show_bug.cgi?id=52470
-  - https://github.com/google/oss-fuzz/pull/6811
   - https://reviews.llvm.org/D112564
   - https://reviews.llvm.org/D112658
   - https://reviews.llvm.org/D113604
@@ -44,6 +69,11 @@ notes: |
   - https://reviews.llvm.org/D113632
   - https://reviews.llvm.org/D113633
   - https://reviews.llvm.org/D113634
+  - https://github.com/google/oss-fuzz/pull/6811
+
+  ## Description
+
+
 tags: []
 project: saoc2021
 priority: P0
