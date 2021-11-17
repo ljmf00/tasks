@@ -1,5 +1,5 @@
 summary: Write 2nd milestone report
-notes: |+
+notes: |
   # SAOC LLDB D integration: 2nd Milestone
 
   Hi SAOC Judge Team,
@@ -73,7 +73,116 @@ notes: |+
 
   ## Description
 
+  Briefly, during this month I've been working on the debugger pretty printing
+  including adding support for custom formatters for array slices and strings and
+  improving the DWARF generation of DMD and LDC as a bonus. I also done, in
+  parallel, ajusts and strived for acceptance of the patches written in the
+  milestone 1, leading to merge of the first patch in the official tree!
 
+  Before tackling pretty printing on the LLDB side, I decided to read a bit about
+  DWARF standard (actually ended up reading it extensively) and listed some
+  issues found in the current approach taken by DMD/LDC/GDC. Without a doubt I
+  realized that DMD is the least conformant among the other compilers, either
+  with some nit DWARF mistakes but also not conformant with the D specification
+  at all. You read briefly about those issues
+  [here](https://lsferreira.net/public/assets/posts/d-saoc-2021-05/dwarf-d-issues.md)
+  .
+
+  After that, during the end of the first week and the whole second week I
+  focused on getting the custom formatters working on LLDB, both normal array
+  slices and string slices. You can find the source code for that
+  [here](https://github.com/ljmf00/llvm-project/tree/llvm-plugin-d).
+
+  Although I found out that most of the implementations were not showing the
+  string slices correctly due to exporting the type encoding incorrectly.
+
+  After having a minimal working implementation of the D language plugin for
+  LLDB, I decided to announce on the LLVM mailing list this and to discuss
+  possible upstreaming of it.
+
+  At this point, the debugging experience looks identical to what GDB offers,
+  with support for demangling and type pretty printing. As shown in the second
+  week of this milestone, an output example, looks something like this:
+
+  ```
+  * thread #1, name = 'app', stop reason = signal SIGSEGV: invalid address (fault address: 0xdeadbeef)
+      frame #0: 0x0000555555555edc app`app.foobar(p=0x00000000deadbeef, a=([0] = 1, [1] = 2, [2] = 3), ...) at app.d:43:2
+     40           immutable(dchar)[] sh = "double atum"d.dup;
+     41           const(wchar)[] si = "wide atum"w.dup;
+     42
+  -> 43           return *p;
+     44   }
+     45
+     46   class CFoo {
+  (lldb) fr v
+  (int *) p = 0x00000000deadbeef
+  (int[]) a = ([0] = 1, [1] = 2, [2] = 3)
+  (long double) c = 123.122999999999999998
+  (Foo) f = {}
+  (string) sa = "atum"
+  (wstring) sb = "wide atum"w
+  (dstring) sc = "double atum"d
+  (char[]) sd = "atum"
+  (dchar[]) se = "double atum"d
+  (wchar[]) sf = "wide atum"w
+  (const(char)[]) sg = "atum"
+  (dstring) sh = "double atum"d
+  (const(wchar)[]) si = "wide atum"w
+  ```
+
+  If you are interested on building the project yourself, you can find some
+  instructions on the second week community update.
+
+  As a bonus and because I thought this was a real issue in DMD, I decided to fix
+  some issues related to pretty printing. Currently DMD exports the following
+  names for the following types:
+
+  ```
+  wchar_t -> wchar
+  long double -> real
+  _Bool -> bool
+  long long -> long
+  uint long long -> ulong
+  imaginary float -> ifloat
+  imaginary double -> idouble
+  imaginary long double -> ireal
+  complex float -> cfloat
+  complex double -> cdouble
+  complex long double -> creal
+  _Delegate -> void delegate(...)
+  _AArray_ucent_int -> int[string]
+  ```
+
+  This is a real issue even with the current GNU debugger (GDB), since DMD
+  exports C-like type names and weird unreadable type names for D specific types,
+  such as associative arrays and delegates (some as described in the DWARF issues
+  document above). Furthermore, because of the encoding mismatch, the debuggers,
+  instead of showing a string slice, they show an integer slice, since `wchar_t`,
+  `char` and `dchar` is exporting signed encoding, which implies an integer
+  value.
+
+  To improve this I decided to make a collection of patches that fixes the
+  majority of those problems on DMD, you can see them above in the patch list. On
+  the meanwhile, I also made some patches to refactor the existing code including
+  the approach on how backend deals with DWARF abbreviations for faster and safer
+  generation and other nit improvements such as binary size reduction by using
+  LEB128 whenever possible.
+
+  I also focused some time on improvements on the LDC side, although not that
+  straightforward, since some of them need upstream changes. I tried to add
+  support for Column DECL attribute, although I quickly realized that it is not
+  that simple because it needs some changes on the LLVM bytecode reader/writter.
+  You can check what I've done in that regard in
+  [this](https://github.com/ljmf00/llvm-project/tree/add-di-column-type) branch.
+
+  ## Conclusion
+
+  In my perspective and from what the milestone two covers, I completed the
+  requirements and I'm happy with the results I achieved. I also tackled along
+  the way the upstreaming of the milestone 1, which also went well. I think there
+  was some missing parts I still didn't complete to make pretty printing top
+  notch, like reporting enumerators correctly and other still opened issues, but
+  I think this is already a good step towards better debugging.
 tags: []
 project: saoc2021
 priority: P0
