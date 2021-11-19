@@ -1,0 +1,12 @@
+summary: Add this optimization https://alive2.llvm.org/ce/z/0iGU_v
+notes: ""
+tags:
+- llvm
+project: contrib
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-11-19T17:46:42.801522277Z
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
