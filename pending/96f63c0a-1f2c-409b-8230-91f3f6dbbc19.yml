@@ -1,0 +1,13 @@
+summary: Take a look at https://issues.dlang.org/show_bug.cgi?id=21416
+notes: ""
+tags:
+- dlang
+- dmd
+project: contrib
+priority: P3
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-11-22T15:27:08.344406078Z
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
