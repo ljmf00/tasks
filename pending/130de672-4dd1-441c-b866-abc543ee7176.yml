@@ -1,0 +1,13 @@
+summary: Fix https://issues.dlang.org/show_bug.cgi?id=21953
+notes: ""
+tags:
+- dlang
+- dmd
+project: contrib
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-11-22T15:26:21.697014523Z
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
