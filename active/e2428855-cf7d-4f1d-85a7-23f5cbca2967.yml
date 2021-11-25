@@ -1,5 +1,58 @@
 summary: Add 10th Weekly Update
-notes: ""
+notes: |
+  ---
+  title: 'SAOC LLDB D integration: 10th Weekly Update'
+  date: '2021-11-25T21:26:00+01:00'
+  tags: ['saoc', 'saoc2021', 'dlang', 'llvm', 'lldb', 'debug', 'debugging', 'dwarf']
+  description: "This post describes what I've done on the 10th week of the
+  Symmetry Autumn of Code 2021, including follow up updates on the LLVM patches
+  and implementation of a minimal TypeSystem for D."
+  ---
+
+  Hi D community!
+
+  I'm here again, to describe what I've done during the tenth week of Symmetry
+  Autumn of Code.
+
+  ## LLVM upstream follow up update
+
+  During the discussion for the next patch in the train, 4 more patches have been
+  raised, due to request to split it even more:
+
+  - https://reviews.llvm.org/D114305
+  - https://reviews.llvm.org/D114307
+  - https://reviews.llvm.org/D114308
+  - https://reviews.llvm.org/D114309
+
+  Some more changes were made on other existing patches due to further discussion
+  on implementation details.
+
+  ## Minimal TypeSystem for D
+
+  This week I finally focused on getting a minimal TypeSystem working for D on
+  the LLDB. This means nothing to the end user and huge change need to be made to
+  make it functional exactly the same as is right now, the main difference is
+  that, instead of relying on Clang type system, we have our own.
+
+  For now it has the Clang type system disabled and detects D as usual, but does
+  nothing, when requesting any type information.
+
+  The current changes for the implementation of D TypeSystem will be in
+  [this](https://github.com/ljmf00/lldb-d/pull/1) PR.
+
+  I decided to create a seperate repository for this until I have a decent plugin
+  to upstream. As this might take a while to implement, I would like to ask the
+  community if it is worth to do some builds to several platforms with the
+  demangling and language formatters enabled? I'm particularly asking this since
+  building LLVM is a beefy task and some may not be able to do it easily with
+  their machine. What is your thoughts?
+
+  ## What is next?
+
+  I will continue implementing TypeSystem for D as well as a new type wrapper to
+  represent a D type. I'm going to start adding support for very basic types.
+
+  Read about the [previous week](../d-saoc-2021-09/).
 tags:
 - community
 project: saoc2021
