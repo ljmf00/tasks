@@ -1,4 +1,4 @@
-summary: Add a TypeSystem for D
+summary: Add a minimal TypeSystem for D
 notes: ""
 tags:
 - lldb
