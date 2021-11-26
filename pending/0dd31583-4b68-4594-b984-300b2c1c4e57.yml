@@ -1,0 +1,13 @@
+summary: Add support for basic types in D TypeSystem
+notes: ""
+tags:
+- lldb
+- llvm
+project: saoc2021
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-11-26T00:02:50.696882551Z
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
