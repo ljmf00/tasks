@@ -1,5 +1,77 @@
 summary: Add 11th Weekly Update
-notes: ""
+notes: |+
+  ---
+  title: 'SAOC LLDB D integration: 11th Weekly Update'
+  date: '2021-12-02T16:31:00+01:00'
+  tags: ['saoc', 'saoc2021', 'dlang', 'llvm', 'lldb', 'debug', 'debugging', 'dwarf']
+  description: "This post describes what I've done on the 11th week of the
+  Symmetry Autumn of Code 2021, including follow up updates on the LLVM patches
+  decoupling of clang-specific code on LLDB interfaces and start implementation
+  of D basic types."
+  ---
+
+  Hi D community!
+
+  I'm here again, to describe what I've done during the eleventh week of Symmetry
+  Autumn of Code.
+
+  ## LLVM upstream follow up update
+
+  Three more patches in the D demangling patch train got merged!
+
+  - https://reviews.llvm.org/D111415
+  - https://reviews.llvm.org/D114305
+  - https://reviews.llvm.org/D114307
+
+  I joined this week on the LLVM official team to help provide maintenance on the
+  code I introduced and planning to introduce as well as general changes made for
+  D in the official tree.
+
+  I have 2 more patches already accepted about the demangling but I didn't merge
+  them yet, as I'm having some problems on running the test suite locally.
+
+  Currently, LLVM already supports special D main, simple multiple identifiers
+  and anonymous symbols. Next step is to support basic and compound types,
+  although I think this needs to be split up, as discussed in some patches.
+
+  ## Implementation of basic types and decoupling Clang-specific code
+
+  I started this week implementing basic types on the D TypeSystem, although, in
+  the meanwhile, I found that some decoupling is needed, since the current LLDB
+  architecture for parsing debug info has some entanglement with clang-specific
+  structures such as the AST Context and other TypeSystem and AST related
+  structures. I though this was something already considered, but a lot of effort
+  on this was left behind when other languages stop being supported, like Go.
+
+  I made some patches to move that forward in the upstream:
+
+  - https://reviews.llvm.org/D114668
+  - https://reviews.llvm.org/D114719
+  - https://reviews.llvm.org/D114746
+
+  Still about the decoupling, I found out that only DWARF Parser is reasonably
+  decoupled, but other debug info parsers like
+  [PDB](https://github.com/llvm/llvm-project/blob/main/lldb/source/Plugins/SymbolFile/PDB/PDBASTParser.cpp)
+  are really entangled with the Clang TypeSystem. There is no generic interface
+  at the moment, and I plan to decouple that as well, although, it is not really
+  a priority for me, since my main development environment is Linux. That said,
+  I'm probably going to left Windows support as a second priority, for now.
+
+  I added those patches to the [PR](https://github.com/ljmf00/lldb-d/pull/1) I
+  created last week and continued working on it.
+
+  ## What is next?
+
+  I haven't finished the type wrapper to represent a D type, due to those
+  decoupling issues. I will hopefully finish the implementation next week and try
+  to have some simple output on the LLDB side.
+
+  You can read this also on my blog,
+  [here](https://lsferreira.net/posts/d-saoc-2021-11/). Check out also my
+  solutions for Advent of Code, if you are also interested in :)
+
+  Read about the [previous week](../d-saoc-2021-10/).
+
 tags:
 - community
 project: saoc2021
