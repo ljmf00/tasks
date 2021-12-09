@@ -1,5 +1,72 @@
 summary: Add 12th Weekly Update
-notes: ""
+notes: |
+  ---
+  title: 'SAOC LLDB D integration: 12th Weekly Update'
+  date: '2021-12-09T15:25:00+01:00'
+  tags: ['saoc', 'saoc2021', 'dlang', 'llvm', 'lldb', 'debug', 'debugging', 'dwarf']
+  description: "This post describes what I've done on the 12th week of the
+  Symmetry Autumn of Code 2021, including follow up updates on the LLVM patches
+  continuation of decoupling of clang-specific code on LLDB interfaces and
+  finishing implementation of D basic types."
+  ---
+
+  Hi D community!
+
+  I'm here again, to describe what I've done during the twelfth week of Symmetry
+  Autumn of Code.
+
+  ## LLVM upstream follow up update
+
+  Two more patches in the D demangling patch train got merged!
+
+  - https://reviews.llvm.org/D114308
+  - https://reviews.llvm.org/D114309
+
+  After getting my testsuite working reasonably well, I self merged those two
+  accepted patches. I've contacted some LLVM members to figure out why buildbots
+  were not reproducing my errors, and it seems some tests are not running on
+  their testsuite, hence the error.
+
+  I also amended some existing patches, accordingly with reviews.
+
+  ## Finishing implementation of basic types and continuing decoupling Clang-specific code
+
+  I finished the implementation I had in mind to support at least one basic type
+  (I choose boolean, just for testing it, being straightforward to implement the
+  rest) with a Type wrapper called `DType`. Although, I'm not getting any output
+  from the DWARF parser and `ParseTypeFromDWARF` function is not being called at
+  all. I checked other language implementations, like Golang, but they are very
+  outdated. I assume there is yet another entangled clang-specific stuff I still
+  need to figure out or something I'm missing.
+
+  You can see the changes here:
+  https://github.com/devtty63/llvm-project/tree/lldb-d/implement-typesystem-d
+
+  I made one more patch to move forward with clang-specific decoupling, in order
+  to be able to support custom languages:
+
+  - https://reviews.llvm.org/D115201
+
+  I have more changes uncommitted that needs some tuning, including a DWARF to
+  LLDB encoding helper, needed by language DWARF AST Parsers.
+
+  ## Simple Continuous Integration for LLDB-d
+
+  I've been tinkering with some custom continuous integration for my llvm tree to
+  provide automated builds to the community to test. So, I moved the repository
+  to a new organization just to be able to have organization-wide self-hosted
+  machines on Github actions. I already have a successful action working but it
+  takes around 4h to complete, not including the actual testsuite, so I still
+  need to revaluate the workflow and probably choose self-hosted machines for
+  fast builds. Here are the workflows, if you are interested:
+  https://github.com/devtty63/llvm-project/actions .
+
+  ## What is next?
+
+  I will try to figure out why my current approach is not working as expected and
+  if I get a successful output, I will start working on the DWARF dump system.
+
+  Read about the [previous week](../d-saoc-2021-11/).
 tags: []
 project: saoc2021
 priority: P0
