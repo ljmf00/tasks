@@ -1,5 +1,11 @@
 summary: Send message to lldb-dev to add more options to buildbots
-notes: ""
+notes: |
+  Hi lldb-dev,
+
+  I'm CC'ing the LLDB buildbot owners, in case they are not subscribed to lldb-dev
+  and writing here in case there is any external buildbot.
+
+  I have a few questions about buildbots, in particular with LLDB buildbots.
 tags:
 - lldb
 - llvm
