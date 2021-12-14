@@ -1,5 +1,9 @@
 summary: Add support for basic types in D TypeSystem
-notes: ""
+notes: |+
+  - Add getter for lldb::Format in DType
+  - Add getter for lldb::Encoding in DType
+  - Add getter for lldb::BasicType in DType
+
 tags:
 - lldb
 - llvm
