@@ -1,5 +1,52 @@
 summary: Add Milestone 3 report
-notes: ""
+notes: |
+  # SAOC LLDB D integration: 3rd Milestone
+
+  Hi SAOC Judge Team,
+
+  I'm here to report what I've done during the 3rd Milestone on the Symmetry
+  Autumn of Code. You can consult the milestones
+  [here](https://lsferreira.net/public/assets/posts/d-saoc-2021-01/milestones.md).
+
+  ## Summary
+  ### Weekly updates
+
+  You can find my weekly updates either on the forum or on my blog:
+  - Week 9:
+    [https://forum.dlang.org/thread/mailman.891.1637273057.11670.digitalmars-d@puremagic.com](forum)
+    | [https://lsferreira.net/posts/d-saoc-2021-09](blog)
+  - Week 10:
+    [https://forum.dlang.org/thread/mailman.1018.1637883198.11670.digitalmars-d@puremagic.com](forum)
+    | [https://lsferreira.net/posts/d-saoc-2021-10](blog)
+  - Week 11:
+    [https://forum.dlang.org/thread/hhadillhyyiwekyluotg@forum.dlang.org](forum)
+    | [https://lsferreira.net/posts/d-saoc-2021-11](blog)
+  - Week 12:
+    [https://forum.dlang.org/thread/eccwqzsewrtsoinghxtk@forum.dlang.org](forum)
+    | [https://lsferreira.net/posts/d-saoc-2021-12](blog)
+  - Week 13:
+    [https://forum.dlang.org/thread/avdjlcpavgteneazaebd@forum.dlang.org](forum)
+    | [https://lsferreira.net/posts/d-saoc-2021-13](blog)
+
+  ### Patches / Bugs / Mailing list threads
+
+  - https://github.com/dlang/dmd/pull/13287
+  - https://github.com/ldc-developers/ldc/issues/3870
+  - https://issues.dlang.org/show_bug.cgi?id=22508
+  - https://github.com/dlang/dmd/pull/13296
+  - https://github.com/dlang/dmd/pull/13301
+  - https://github.com/dlang/dmd/pull/13302
+  - https://github.com/dlang/dlang.org/pull/3124
+  - https://reviews.llvm.org/D114305
+  - https://reviews.llvm.org/D114307
+  - https://reviews.llvm.org/D114308
+  - https://reviews.llvm.org/D114309
+  - https://reviews.llvm.org/D114668
+  - https://reviews.llvm.org/D114719
+  - https://reviews.llvm.org/D114746
+  - https://reviews.llvm.org/D115201
+  - https://reviews.llvm.org/D115662
+  - https://reviews.llvm.org/D115663
 tags:
 - community
 project: saoc2021
