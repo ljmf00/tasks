@@ -1,5 +1,57 @@
 summary: Add Week 13th
-notes: ""
+notes: |
+  ---
+  title: 'SAOC LLDB D integration: 13th Weekly Update'
+  date: '2021-12-09T15:25:00+01:00'
+  tags: ['saoc', 'saoc2021', 'dlang', 'llvm', 'lldb', 'debug', 'debugging', 'dwarf']
+  description: "This post describes what I've done on the 13th week of the
+  Symmetry Autumn of Code 2021, including some bug fixes and trivial patches."
+  ---
+
+  Hi D community!
+
+  I'm here again, to describe what I've done during the thirteenth week of
+  Symmetry Autumn of Code. This week as a bit atypical as I got infected with
+  COVID-19 and this made me feel exhausted both physically and mentally.
+
+  ## Working approach to fetch basic types
+
+  After digging a bit about the problem I found out there is no problem
+  specifically in Release builds, and a simple function called `Verify` is there
+  to double check if the type is correct for Debug builds. After fixing that
+  function, the LLDB can now dump some simple output about global TLS and non-TLS
+  variables:
+
+  ```
+  (lldb) ta v
+  Global variables for app.d in app:
+  app.bar = <No TLS data currently exists for this thread.>
+
+  app.ptr = <could not resolve type>
+  app.foobar =
+  ```
+
+  For now it only recognizes boolean types, but it can't show up the value since
+  LLDB doesn't know a way to dump it correctly.
+
+  You can try this version yourself using
+  [this](https://github.com/devtty63/llvm-project/tree/lldb-d/implement-typesystem-d)
+  branch.
+
+  ## Decoupling and trivial patches
+
+  I pushed a patch to decouple DWARF to LLDB encoding logic from Clang DWARF AST
+  Parser, along with a trivial fix about duplicate map assignment:
+
+  - https://reviews.llvm.org/D115662
+  - https://reviews.llvm.org/D115663
+
+  ## What is next?
+
+  I already started working on some helpers to fetch the LLDB Format, Encoding
+  and BasicType, along with other information about a type to properly display
+  them. I'm not sure how Milestone 4 is going to work, as I underestimated
+  the support for custom expessions.
 tags:
 - community
 project: saoc2021
