@@ -2,7 +2,7 @@ summary: Add Week 13th
 notes: |
   ---
   title: 'SAOC LLDB D integration: 13th Weekly Update'
-  date: '2021-12-09T15:25:00+01:00'
+  date: '2021-12-16T23:34:00+01:00'
   tags: ['saoc', 'saoc2021', 'dlang', 'llvm', 'lldb', 'debug', 'debugging', 'dwarf']
   description: "This post describes what I've done on the 13th week of the
   Symmetry Autumn of Code 2021, including some bug fixes and trivial patches."
