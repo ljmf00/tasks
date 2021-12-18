@@ -9,7 +9,7 @@ function faketty() {
 
 function htmltemplate() {
 cat <<- EOF
-<!DOCTYPE html><html><head><title>Tasks</title><style>body{color:white;background-color:black;text-align:center;}a{color:white;}</style></head><body><pre>
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Tasks</title><style>body{color:white;background-color:black;text-align:center;}a{color:white;}</style></head><body><pre>
 EOF
 cat -
 cat <<- EOF
