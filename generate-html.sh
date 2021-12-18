@@ -31,7 +31,7 @@ done
 
 ( cd ".tmp";
 htmltemplate > "../public/index.html" <<- EOF
-<a href="resolved/index.html">resolved</a> | <a href="templates/index.html">templates</a> | <a href="files/recurring/">recurring</a> | <a href="files/pending/">pending</a> | <a href="paused/index.html">paused</a> | <a href="files/delegated/">delegated</a> | <a href="files/deferred/">deferred</a> | <a href="active/index.html">active</a> | <a href="unorganised/index.html">unorganised</a>
+<a href="resolved/index.html">resolved</a> | <a href="templates/index.html">templates</a> | <a href="files/recurring/">recurring</a> | <a href="files/pending/">pending</a> | <a href="paused/index.html">paused</a> | <a href="files/delegated/">delegated</a> | <a href="files/deferred/">deferred</a> | <a href="active/index.html">active</a> | <a href="unorganised/index.html">unorganised</a> | <a href="files/all/">all</a>
 
 $(faketty 'dstask next' | aha -n)
 
