@@ -47,6 +47,153 @@ notes: |
   - https://reviews.llvm.org/D115201
   - https://reviews.llvm.org/D115662
   - https://reviews.llvm.org/D115663
+
+  ## Description
+
+  During this month I've been working on the D `TypeSystem` and D
+  `DWARFASTParser` for LLDB, two major dependencies needed for supporting
+  expression parsing. As discussed with Raphael Isemann on the
+  [lldb-dev](https://lists.llvm.org/pipermail/lldb-dev/2021-November/017115.html)
+  mailing list supporting expression evaluation is "a whole topic on its own". I
+  honestly underestimated this milestone due to lack of knowledge in the LLDB
+  infratructure and on how things are entangled and connected in terms of
+  dependencies. Because of that I didn't finished what I proposed but strived for
+  a better language agnostic interface to accommodate D.
+
+  Furthermore, as usual in the previous milestone, I tried to move forward with
+  some patches I previously submitted to LLVM. To speedup D maintenance on the
+  LLVM official tree, I decided to request myself for commit access. I talked to
+  Chris Lattner and he accepted my request, so now I'm part of the team to
+  review, accept and merge D related code.
+
+  ### More in-depth
+
+  At the very start of the first week, I started on rearrenging some existing
+  patches on LLVM about demangling and I finished fixing/attempting to fix some
+  issues I had in my task list about DWARF generation on DMD/LDC such as:
+
+  - Generate artificial tag on generated main files
+  - Associative arrays are now named with its qualified type name
+  - Attempt to fix the calling convention
+  - Reported issue on LDC about DWARF visibility attributes
+
+  You can read more about this issues on the 9th Weekly update.
+
+  Issues like missing `DW_AT_decl_column` and `DW_TAG_immutable_type` are not yet
+  supported. I left them as a second plan since they requires some upstream
+  changes. Other than that I'm confident that DWARF generation is/will be way
+  better than the previous releases.
+
+  Following the same work on the first week, I continued the D demangling split,
+  raising 4 more patches which are already on the upstream. You can read more
+  about those patches on the patch list at the beginning of the document or read
+  on the 10th weekly update.
+
+  I started implementing a minimal TypeSystem for D programming language. Most of
+  the code is boilerplate at this point, but it is a crucial piece to interface
+  the Symbol file parsers such as DWARF and PDB. After that I started designing a
+  DWARF AST Parser, although found out some entanglement with the Clang
+  TypeSystem and ASTContext which can lead to some code duplication. To avoid it,
+  I decided to make some patches to reduce that duplication and work on a more
+  language-agnostic approach.
+
+  This decoupling approach took some time and it is a task to do in parallel to
+  the D language implementation. I tried to make patches as I saw fitting. You
+  can consult more in detail those patches from 11-13 weekly update.
+
+  I decided to start working on some automated and cross-platform builds to
+  provide to the community the output of what I've done throughout this whole
+  journey. I started with some simple CI configuration but my idea is to possibly
+  have my own workers to build on other platforms other than Linux.
+
+  A lot of code in this milestone were made in my own LLVM tree which you can
+  consult on
+  [this](https://github.com/devtty63/llvm-project/commits/lldb-d/implement-typesystem-d)
+  branch.
+
+  I ended up having very basic type information printing out with D own TypeSystem:
+
+  ```
+  (lldb) ta v
+  Global variables for app.d in app:
+  app.bar = <No TLS data currently exists for this thread.>
+
+  app.ptr = <could not resolve type>
+  app.foobar =
+  ```
+
+  This is some progress towards expression evaluation but technically a run back
+  for the end-user, at this stage, because the Clang-based parser is much more
+  complete in terms of supported features and types. That said, I will have a
+  stuck version on Clang-based parser, in which I will create a release for the
+  users to enjoy pretty printing. You can find that branch
+  [here](https://github.com/devtty63/llvm-project/tree/lldb-d/main).
+
+  ## Milestone 4
+
+  Because the milestone route changed a bit and I had no plans for a 4th
+  milestone, as suggested by Michael Parker, I'm writing some rough list of tasks
+  to tick off during the next milestone. This list can be quite extensive, since
+  there is a lot to integrate with LLDB. The general idea would be to adapt Clang
+  logic and decouple it as much as possible to make that logic more language
+  agnostic and therefore fit D or other future languages.
+
+  - **Implement DWARF basic type parsing and integration with the TypeSystem:**
+    To implement this, it is required to support the majority of the basic types
+    not including type modifiers (only DWARF base type, `DW_TAG_base_type`). It
+    is required to have a map between DType wrapper and the following LLDB
+    enumerations:
+
+    * lldb::Format
+    * lldb::Encoding
+    * lldb::BasicType
+
+    It is also required to have some knowledge of the bit size of each basic
+    type. Other built-in types like vectors may be skipped, if complicated to
+    integrate at this stage.
+
+    This enumeration mapping is responsible of formatting the output value with
+    the right encoding, according to a certain type. From what I'm aware of and
+    according to knowledge on the LLVM infrastructure, this is the only thing
+    required to get value dumping done, but some additional step may be required,
+    in practice. I still need to understand a bit more what `Dump`, `DumpValue`,
+    `DumpSummary` and other dump related methods are for.
+
+    After this, the next step is to support other types such as:
+
+    - **Support other type modifiers:** To fully support types it is required to
+      read other considered type modifiers such as pointers, _typedefs_ (aliases)
+      and types associated with a type qualifier such as const, immutable, ...
+
+    - **Support aggregate types:** Aggregate types such as structs, unions or
+      classes need to be supported. Only simple support is desired, since stuff
+      like inheritance can be a bit more complicated to handle. At least struct
+      fields or base class members may be simple enough.
+
+    - **Support arrays:** Not to be confused with D slices, which are technically
+      interpreted as structs. D slices can be later recognized as native dynamic
+      arrays, but synthetic formatters can handle it for now (work done on the
+      Milestone 2). The idea here, at this stage, would be to support static
+      stack allocated arrays.
+
+    - **Support other types:** Other types like enumerations can be supported.
+
+  - **Implement DWARF function parsing and integration with the TypeSystem:** To
+    implement this, it is required to support
+    `DW_TAG_subprogram`/`DW_TAG_subroutine_type` tags which is dependent of a
+    special type for functions called subroutine types. Support D linkage is
+    blocked due to inconsistent calling convention on both DMD/LDC
+    implementations (see my attempt to fix it on the patch list), so C linkage
+    should be a simple way to support it or rely on GDC implementation.
+
+    After having support for this special type, we should implement the
+    `ParseFunctionFromDWARF` DWARFASTParser override, which is responsible of
+    parsing all the function child tags, such as formal parameters including
+    normal parameters and variadic parameters, and inner functions (functions
+    with the context of the parent outer function).
+
+    I haven't explored much about function features on LLDB, so there might be
+    some hidden dependency I don't know about.
 tags:
 - community
 project: saoc2021
