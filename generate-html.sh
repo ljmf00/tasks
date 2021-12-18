@@ -19,11 +19,14 @@ EOF
 
 mkdir -p .tmp
 trap 'rm -rf ".tmp"' EXIT
-mkdir -p public/files/
+mkdir -p public/files/all
 
 IFS=$'\n'
 for f in $(echo "template resolved recurring pending paused delegated deferred active" | tr ' ' '\n'); do
-  [ -d "$f" ] && cp -r "$f" public/files || :
+  if [ -d "$f" ]; then
+    cp -r "$f" public/files
+    find "$f" -type f -exec cp "{}" public/files/all \;
+  fi
 done
 
 ( cd ".tmp";
