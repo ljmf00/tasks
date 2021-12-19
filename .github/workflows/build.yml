@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         # FIXME: This is ugly as hell. Preferable a properly built docker
         run: |
-          pacman -Syu --noconfirm base-devel sudo git
+          pacman -Syu --noconfirm base-devel sudo git dtools dub ldc
           /usr/sbin/groupadd --system sudo && \
           /usr/sbin/useradd -m --groups sudo user && \
           /usr/sbin/sed -i -e "s/Defaults    requiretty.*/ #Defaults    requiretty/g" /etc/sudoers && \
@@ -31,7 +31,7 @@ jobs:
       - name: Build website
         run: |
           git clone https://github.com/ljmf00/tasks/ $HOME/.dstask/
-          ./generate-html.sh
+          ./generate.d
       - name: Archive artifact folder
         run: tar -cvf public.tar public
       - name: Upload Artifacts
