@@ -154,16 +154,16 @@ notes: |
 
     This enumeration mapping is responsible of formatting the output value with
     the right encoding, according to a certain type. From what I'm aware of and
-    according to knowledge on the LLVM infrastructure, this is the only thing
+    according to my knowledge on the LLVM infrastructure, this is the only thing
     required to get value dumping done, but some additional step may be required,
     in practice. I still need to understand a bit more what `Dump`, `DumpValue`,
     `DumpSummary` and other dump related methods are for.
 
     After this, the next step is to support other types such as:
 
-    - **Support other type modifiers:** To fully support types it is required to
-      read other considered type modifiers such as pointers, _typedefs_ (aliases)
-      and types associated with a type qualifier such as const, immutable, ...
+    - **Support type modifiers:** To fully support types it is required to read
+      other considered type modifiers such as pointers, _typedefs_ (aliases) and
+      types associated with a type qualifier such as const, immutable, ...
 
     - **Support aggregate types:** Aggregate types such as structs, unions or
       classes need to be supported. Only simple support is desired, since stuff
