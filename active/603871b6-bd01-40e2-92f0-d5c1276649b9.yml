@@ -1,5 +1,155 @@
 summary: Add 14th weekly update
-notes: ""
+notes: |
+  ---
+  title: 'SAOC LLDB D integration: 14th Weekly Update'
+  date: '2021-12-23T19:18:00+01:00'
+  tags: ['saoc', 'saoc2021', 'dlang', 'llvm', 'lldb', 'debug', 'debugging', 'dwarf']
+  description: "This post describes what I've done on the 14th week of the
+  Symmetry Autumn of Code 2021, including milestone 4 tasks list, some patches on
+  the upstream about unicode char support, add support for type name dumping and
+  implementation of LLDB helpers for DType wrapper."
+  ---
+
+  Hi D community!
+
+  I'm here again, to describe what I've done during the fourteenth week of
+  Symmetry Autumn of Code. Updates on my COVID situation: I successfully
+  recovered from it, just feel some tiredness and lack of energy sometimes, but
+  other than that, dry cough is now occasional and I already recovered from the
+  other symptoms such as lack of smell and taste, and fever. Nothing to worry,
+  from now on :)
+
+  ## Milestone 4 rough task list
+
+  Since the route of the project changed a bit and I had no concrete plans for
+  the 4th milestone on my previous milestone list, I wrote some rough list of
+  tasks to tick off during development. This list can be quite extensive, since
+  there is a lot to integrate with LLDB. The general idea would be to adapt Clang
+  logic and decouple it as much as possible to make that logic more language
+  agnostic and therefore fit D or other future languages:
+
+  - **Implement DWARF basic type parsing and integration with the TypeSystem:**
+    To implement this, it is required to support the majority of the basic types
+    not including type modifiers (only DWARF base type, `DW_TAG_base_type`). It
+    is required to have a map between DType wrapper and the following LLDB
+    enumerations:
+
+    * lldb::Format
+    * lldb::Encoding
+    * lldb::BasicType
+
+    It is also required to have some knowledge of the bit size of each basic
+    type. Other built-in types like vectors may be skipped, if complicated to
+    integrate at this stage.
+
+    This enumeration mapping is responsible of formatting the output value with
+    the right encoding, according to a certain type. From what I'm aware of and
+    according to my knowledge on the LLVM infrastructure, this is the only thing
+    required to get value dumping done, but some additional step may be required,
+    in practice. I still need to understand a bit more what `Dump`, `DumpValue`,
+    `DumpSummary` and other dump related methods are for.
+
+    After this, the next step is to support other types such as:
+
+    - **Support type modifiers:** To fully support types it is required to read
+      other considered type modifiers such as pointers, _typedefs_ (aliases) and
+      types associated with a type qualifier such as const, immutable, ...
+
+    - **Support aggregate types:** Aggregate types such as structs, unions or
+      classes need to be supported. Only simple support is desired, since stuff
+      like inheritance can be a bit more complicated to handle. At least struct
+      fields or base class members may be simple enough.
+
+    - **Support arrays:** Not to be confused with D slices, which are technically
+      interpreted as structs. D slices can be later recognized as native dynamic
+      arrays, but synthetic formatters can handle it for now (work done on the
+      Milestone 2). The idea here, at this stage, would be to support static
+      stack allocated arrays.
+
+    - **Support other types:** Other types like enumerations can be supported.
+
+  - **Implement DWARF function parsing and integration with the TypeSystem:** To
+    implement this, it is required to support
+    `DW_TAG_subprogram`/`DW_TAG_subroutine_type` tags which is dependent of a
+    special type for functions called subroutine types. Support D linkage is
+    blocked due to inconsistent calling convention on both DMD/LDC
+    implementations (see my attempt to fix it
+    [here](https://github.com/dlang/dmd/pull/13287)), so C linkage should be a
+    simple way to support it or rely on GDC implementation.
+
+    After having support for this special type, we should implement the
+    `ParseFunctionFromDWARF` DWARFASTParser override, which is responsible of
+    parsing all the function child tags, such as formal parameters including
+    normal parameters and variadic parameters, and inner functions (functions
+    with the context of the parent outer function).
+
+    I haven't explored much about function features on LLDB, so there might be
+    some hidden dependency I don't know about.
+
+
+  ## LLVM upstream updates
+
+  During the development of DType mapping to lldb::BasicType, I found out that
+  UTF-8 char basic type was missing, so I wrote two patches to implement it on
+  the upstream:
+
+  - https://reviews.llvm.org/D116136
+  - https://reviews.llvm.org/D116138
+
+  With that in mind, I also got the missing part to make unicode8 formatting
+  working on Clang-based TypeSystem, completing the D language plugin as well.
+  I've done a partial patch to fix that in the past
+  ([D112564](https://reviews.llvm.org/D112564)), so I amended it and added the
+  requested tests to be ready to merge.
+
+  ## Helpers in DType wrapper for LLDB enumerations
+
+  I implemented some helpers required in the DType wrapper to make the type kind
+  with:
+
+    * lldb::Format
+    * lldb::Encoding
+    * lldb::BasicType
+
+  With that done, I started tinkering with LLDB dumping system, although, some
+  unknown dependency is still missing (`Dump` functions are not being called with
+  those helpers implemented). My guess is that some missing type information is
+  required in order to LLDB recognize a type as, e.g. scalar type.
+
+  ## Type name dumping
+
+  Value dumping is not yet working, but I already got a way to dump the type
+  name. For now it is only dumping type name for `bool`. The output looks
+  something like this:
+
+  ```
+  (lldb) ta v
+  Global variables for app.d in app:
+  (bool) app.bar = <No TLS data currently exists for this thread.>
+
+  app.ptr = <could not resolve type>
+  (bool) app.foobar =
+  ```
+
+  You can consult the source code for those changes
+  [here](https://github.com/devtty63/llvm-project/tree/lldb-d/implement-typesystem-d).
+
+  ## What is next?
+
+  I plan to extend type name dumping to the rest of the built-in type kinds by
+  mapping constant names to the kind enumeration. I also plan to hopefully have
+  some output about `app.foobar` value. For that, I'm going to investigate the
+  missing dependency and implement the missing logic. If that is successful, I
+  will extend it to the rest of the built-in types.
+
+  You can also read this on my blog,
+  [here](https://lsferreira.net/posts/d-saoc-2021-14/).
+
+  You can also read this on the D programming language forum,
+  [here](https://forum.dlang.org/thread/ynyjkvhgetyubpaffzxu@forum.dlang.org#post-ynyjkvhgetyubpaffzxu:40forum.dlang.org),
+  and discuss there!
+
+  Read about the [previous week](../d-saoc-2021-13/).
 tags:
 - community
 project: saoc2021
