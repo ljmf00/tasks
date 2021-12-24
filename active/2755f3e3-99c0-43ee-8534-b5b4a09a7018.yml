@@ -1,4 +1,4 @@
-summary: Add type name mapping for DType
+summary: Add type name mapping for DType kind
 notes: ""
 tags:
 - lldb
