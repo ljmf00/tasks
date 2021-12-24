@@ -1,4 +1,4 @@
-summary: Add implementation for GetTypeInfo
+summary: Add minimal implementation for GetTypeInfo
 notes: ""
 tags:
 - lldb
