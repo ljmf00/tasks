@@ -1,0 +1,13 @@
+summary: Add https://gitlab.com/x86-psABIs/x86-64-ABI to static content
+notes: ""
+tags:
+- static
+- website
+project: personal
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-12-26T22:58:13.220859661Z
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
