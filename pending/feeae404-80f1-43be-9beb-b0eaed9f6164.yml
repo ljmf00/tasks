@@ -1,5 +1,5 @@
 summary: Issue when dstask show-next
-notes: ""
+notes: "When executing `dstask show-next`, the following happens:\n\n```\npanic: this should never happen?\n\ngoroutine 1 [running]:\nmain.main()\n\t./main.go:167 +0x1888\n```\n"
 tags:
 - dstask
 - github
