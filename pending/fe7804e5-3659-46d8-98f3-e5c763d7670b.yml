@@ -1,0 +1,13 @@
+summary: Change pre-commit autoupdate commit message
+notes: ""
+tags:
+- ci
+- precommit
+project: epslon-dlang
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-12-27T18:13:10.996591938Z
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
