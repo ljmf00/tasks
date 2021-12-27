@@ -3,6 +3,7 @@ notes: "When executing `dstask show-next`, the following happens:\n\n```\npanic:
 tags:
 - dstask
 - github
+- nointernet
 project: contrib
 priority: P2
 delegatedto: ""
