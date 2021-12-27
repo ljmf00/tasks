@@ -2,6 +2,7 @@ summary: Change pre-commit autoupdate commit message
 notes: ""
 tags:
 - ci
+- nointernet
 - precommit
 project: epslon-dlang
 priority: P2
