@@ -1,4 +1,4 @@
-summary: Change pre-commit autoupdate commit message
+summary: GH/#16 Change pre-commit autoupdate commit message
 notes: ""
 tags:
 - ci
