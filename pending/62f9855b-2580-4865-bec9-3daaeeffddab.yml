@@ -1,0 +1,14 @@
+summary: Add patch https://github.com/ldc-developers/llvm-project/commit/bf27c756e9ad269d87212c0ba139a4fa8c00eda6
+notes: ""
+tags:
+- ldc
+- llvm
+- port
+project: saoc2021
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2021-12-30T16:31:28.744021776Z
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
