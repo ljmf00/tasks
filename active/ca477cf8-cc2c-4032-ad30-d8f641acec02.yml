@@ -1,5 +1,127 @@
 summary: Add 15th weekly update
-notes: ""
+notes: |+
+  ---
+  title: 'SAOC LLDB D integration: 15th Weekly Update'
+  date: '2021-12-30T23:00:00+01:00'
+  tags: ['saoc', 'saoc2021', 'dlang', 'llvm', 'lldb', 'debug', 'debugging', 'dwarf']
+  description: "This post describes what I've done on the 15th week of the
+  Symmetry Autumn of Code 2021, including some patches on the upstream about LLD,
+  implement type value dumping and start implementing other built-in types along
+  with some problems with real type."
+  ---
+
+  Hi D community!
+
+  Sorry for being late. I'm here again, to describe what I've done during the
+  fifteenth week of Symmetry Autumn of Code.
+
+  ## LLVM upstream changes: LLD D demangling
+
+  I didn't work on the demangler patches but I touched on some other existing
+  ones, such as implementation of `DW_TAG_immutable_type` on the LLVM core which
+  had some missing pieces and added tests. (See
+  [here](https://reviews.llvm.org/D113633))
+
+  I also added support for other demanglers other than Itanium on LLD linker.
+  This included the freshly added D demangler along with Rust and other future
+  demanglers added to LLVM core.
+
+  So now instead of:
+
+  ```
+  app.d:16: error: undefined reference to '_D3app7noexistFZi'
+  ```
+
+  You will have this:
+
+  ```
+  app.d:16: error: undefined reference to 'app.noexist()'
+  ```
+
+  This came along with my work on adding D demangler on the LLVM core. You can
+  read more about this change, [here](https://reviews.llvm.org/D116279).
+
+  ## Type name dumping and value dumping
+
+  I added D type kind mapping to type name for the rest of the built-in types.
+
+  I also have found the missing part to make value dumping working. I needed to
+  implement two missing parts:
+
+  - A way to discover the bit size based on the D type wrapper type kind.
+  - A way to get the type information based on a type kind using
+    `lldb::TypeFlags`
+
+  This way LLDB can understand if a certain type kind is built-in, has value, is
+  signed, is integer, is scalar, etc...
+
+  So finally, I can print a simple runtime boolean value:
+
+  ```
+  (lldb) ta v
+  Global variables for app.d in app:
+  (bool) app.falseval = false
+  (bool) app.trueval = true
+  ```
+
+  You can consult the source code for those changes
+  [here](https://github.com/devtty63/llvm-project/tree/lldb-d/implement-typesystem-d).
+
+  ## Expanding value dumping to other built-in types
+
+  Having this implemented, I now need to compare and check if the DWARF bit size
+  and encoding match a certain D type kind. The implementation of other types are
+  not yet pushed, since I faced a problem while adding logic to platform-specific
+  size types, such as `real`.
+
+  ### The `real` problem
+
+  Since `real` is, according to D specification, platform-specific, I need to
+  accomudate the right bit size according to a certain target and discover the
+  right floating point encoding. This quite a challange because DWARF doesn't
+  specify the floating point encoding. To try to understand why, I did a bit of
+  research about that, and found
+  [this](https://gcc.gnu.org/legacy-ml/gcc/2015-10/msg00015.html) mailing list
+  thread from 2015 about distiguish different floating point encoding in DWARF.
+
+  Right now, there is no way and it seems there is no intention to distiguish
+  target-specific floating point formats on DWARF, because according to them,
+  this should be specified on the target ABI. But what if the ABI doesn't specify
+  this behaviour? We should at least have a way to distiguish IEEE interchangable
+  format and non-interchangable formats, like 128-bit x86 SSE floating points.
+
+  Fortunately, we don't have to worry much about this, since we don't use 128-bit
+  in any of D implementation, although our spec say:
+
+      real: largest floating point size available
+
+      Implementation Defined: The real floating point type has at least the range
+      and precision of the double type. On x86 CPUs it is often implemented as
+      the 80 bit Extended Real type supported by the x86 FPU.
+
+  This is wrong, because, AFAIK, on x86-64 System V ABI, 128-bit floating point
+  is the largest available, since AMD64 CPUs are required to have at least SSE
+  extensions, which have support for 128-bit XMM registers to perform
+  floating-point operations.
+
+  So, LDC and DMD generates binaries with System V as target ABI but uses x87 FPU
+  instead of SSE for `real`, which means they are out of spec?
+
+  Anyway, according to Mathias and as I suggested, the simple way to do this is
+  to hardcode this according the target triple and the DWARF type name, but I
+  think this can be problematic for either when we support 128-bit floats or when
+  the ABI doesn't specify the floating point encoding format.
+
+  That said, I would like to have some thoughts on this, specially if someone
+  knows if there is any special case for certain targets and how DMD/LDC/GDC
+  interprets the D spec and target ABI spec.
+
+  ## What is next?
+
+  I plan to finish support for built-in type value dumping and hopefully start
+  implementing DIDerivedType which includes DWARF tags for `const` type
+  modifiers, `alias`/`typedef`s,...
+
 tags:
 - community
 project: saoc2021
