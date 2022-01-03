@@ -38,7 +38,7 @@ jobs:
           no-cache: true
           pull: true
           push: true
-          tags: ljmf00/archlinux:latest
+          tags: ljmf00/tasks-builder:latest
       - if: github.event_name == 'pull_request'
         name: Test build
         uses: docker/build-push-action@v2
