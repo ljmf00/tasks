@@ -1,0 +1,13 @@
+summary: Enable check_yaml pre-commit hook
+notes: ""
+tags:
+- precommit
+- tasks
+project: personal
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2022-01-03T05:11:51.884032727Z
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
