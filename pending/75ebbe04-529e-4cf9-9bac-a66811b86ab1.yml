@@ -1,6 +1,7 @@
 summary: add rdmd to serve-d-git package
 notes: ""
-tags: []
+tags:
+- easytask
 project: archlinux
 priority: P2
 delegatedto: ""
