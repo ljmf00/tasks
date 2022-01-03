@@ -12,22 +12,9 @@ on:
 jobs:
   website:
     runs-on: ubuntu-latest
-    container: archlinux
+    container: ljmf00/tasks-builder
     steps:
       - uses: actions/checkout@v2
-      - name: Install dependencies
-        # FIXME: This is ugly as hell. Preferable a properly built docker
-        run: |
-          pacman -Syu --noconfirm base-devel sudo git dtools dub ldc
-          /usr/sbin/groupadd --system sudo && \
-          /usr/sbin/useradd -m --groups sudo user && \
-          /usr/sbin/sed -i -e "s/Defaults    requiretty.*/ #Defaults    requiretty/g" /etc/sudoers && \
-          /usr/sbin/echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-          (cd /tmp && \
-          curl https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=yay-bin -o PKGBUILD && \
-          sudo -u user makepkg -sic --noprogressbar --noconfirm && \
-          rm -rf PKGBUILD yay* )
-          sudo -u user yay -S --noconfirm dstask aha npm
       - name: Build website
         run: |
           git clone https://github.com/ljmf00/tasks/ $HOME/.dstask/
