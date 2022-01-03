@@ -1,6 +1,7 @@
 summary: Fix manual git clone on website generator Github Action
 notes: ""
 tags:
+- easytask
 - ghaction
 - github
 - tasks
