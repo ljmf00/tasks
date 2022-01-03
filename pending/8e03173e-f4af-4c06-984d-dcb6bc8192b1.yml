@@ -2,6 +2,7 @@ summary: fix colour key to be consitent with all help pages
 notes: ""
 tags:
 - dstask
+- easytask
 project: contrib
 priority: P2
 delegatedto: ""
