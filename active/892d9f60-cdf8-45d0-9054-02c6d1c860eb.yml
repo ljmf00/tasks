@@ -1,5 +1,88 @@
 summary: Add 16th weekly update
-notes: ""
+notes: |
+  ---
+  title: 'SAOC LLDB D integration: 16th Weekly Update'
+  date: '2022-01-07T03:12:00+01:00'
+  tags: ['saoc', 'saoc2021', 'dlang', 'llvm', 'lldb', 'debug', 'debugging', 'dwarf']
+  description: "This post describes what I've done on the 16th week of the
+  Symmetry Autumn of Code 2021, including updates on the upstream patches and
+  implementation of the value dumping for the rest of the built-in types."
+  ---
+
+  Hi D community!
+
+  I'm here again, to describe what I've done during the sixteenth week of
+  Symmetry Autumn of Code.
+
+  ## LLVM upstream updates
+
+  This week I continued my work on the demangler patches, including the next 3
+  patches related to minimal type parsing and symbol/type back referencing. I
+  removed most of the types in this next patch, due to the fact that it requires
+  other dependencies to be visually tested.
+
+  Two more patches got merged into the upstream. The LLD one got reverted due to
+  failures on PowerPC buildbots, although the error ended up being a missing
+  dependency. The second one was about the other patch I worked last week about
+  immutable type qualifier in the DWARF debug info:
+
+  - https://reviews.llvm.org/D113633
+  - https://reviews.llvm.org/D116279
+
+  ## Extending value dumping for the rest of the built-in types
+
+  After adding support for boolean type I successfully extended type value
+  dumping for the rest of the built-in types:
+
+  ```
+  (lldb) ta v
+  Global variables for app.d in app:
+  (int) app.int42_gvar = -42
+  (ulong) app.ulong42_gvar = 42
+  (uint) app.uint_gvar = 0
+  (uint) app.uint42_gvar = 42
+  (double) app.double_42_gvar = -42
+  (real) app.real42_gvar = 42
+  (long) app.long42_gvar = -42
+  (dchar) app.d = U+0x00000064
+  (ulong) app.ulong_gvar = 0
+  (char) app.c = 0x63
+  (bool) app.true_gvar = true
+  (ushort) app.ushort_gvar = 0
+  (byte) app.byte42_gvar = d6
+  (double) app.double_gvar = 0
+  (long) app.long_gvar = 0
+  (double) app.double42_gvar = 42
+  (float) app.float42_gvar = 42
+  (wchar) app.w = U+0077
+  ...
+  ```
+
+  I have tested almost every built-in type including `real`. Thanks to some
+  guidance on the previous weekly report, I made some basic logic to make `real`
+  work according to the exported DWARF type name, although realizing that D
+  should map directly to `long double`, I can later map the `real` bit size using
+  the same interface used in the Clang DWARF Parser (`clang::TargetInfo`).
+
+  From what I tested, at least one target that have support for 128bit `long
+  double`, RISC-V, is not correctly mapped by the LDC compiler, so I decided to
+  make a PR to fix that:
+
+  https://github.com/ldc-developers/ldc/pull/3891
+  https://github.com/ldc-developers/ldc/pull/3892
+
+  ## What is next?
+
+  After having support for basic built-in types functionality, I plan to
+  implement some type modifiers, including `const` and add support for other
+  derived types. I also plan to work in parallel to merge some more patches about
+  the demangler.
+
+  You can also read this on the D programming language forum,
+  [here](https://forum.dlang.org/thread/cfeuzatpyknarblnsoti@forum.dlang.org#post-cfeuzatpyknarblnsoti:40forum.dlang.org),
+  and discuss there!
+
+  Read about the [previous week](../d-saoc-2021-15/).
 tags:
 - community
 project: saoc2021
