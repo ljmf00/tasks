@@ -1,0 +1,12 @@
+summary: Fix rpi4 bootloader
+notes: ""
+tags:
+- infrastructure
+project: personal
+priority: P0
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2022-01-10T16:35:09.680495337Z
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
