@@ -1,0 +1,13 @@
+summary: Add CLANG_DEFAULT_SSP flag to enable strong stack protection by default
+notes: ""
+tags:
+- clang
+- llvm
+project: contrib
+priority: P1
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2022-01-14T00:22:55.463881601Z
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
