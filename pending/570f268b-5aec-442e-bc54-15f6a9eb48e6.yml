@@ -1,5 +1,31 @@
 summary: Add CLANG_DEFAULT_SSP flag to enable strong stack protection by default
-notes: ""
+notes: |
+  Change
+
+  ```diff
+  diff --git a/clang/lib/Driver/ToolChains/Linux.h b/clang/lib/Driver/ToolChains/Linux.h
+  index a5ec33bd44f1..fabb4d79631a 100644
+  --- a/clang/lib/Driver/ToolChains/Linux.h
+  +++ b/clang/lib/Driver/ToolChains/Linux.h
+  @@ -60,6 +60,11 @@ public:
+         const llvm::opt::ArgList &DriverArgs, const JobAction &JA,
+         const llvm::fltSemantics *FPType = nullptr) const override;
+
+  +  LangOptions::StackProtectorMode
+  +  GetDefaultStackProtectorLevel(bool KernelOrKext) const override {
+  +    return LangOptions::SSPStrong;
+  +  }
+  +
+   protected:
+     Tool *buildAssembler() const override;
+     Tool *buildLinker() const override;
+  ```
+
+  Similar to https://reviews.llvm.org/rG1042de90589c
+  Ping arch: @felixonmars @foutrelis
+
+  Also requires https://reviews.llvm.org/D115751 and remove
+  https://reviews.llvm.org/rGb5d3bbcc9433193351a22b738c7ff4b007cb1e68 .
 tags:
 - clang
 - llvm
