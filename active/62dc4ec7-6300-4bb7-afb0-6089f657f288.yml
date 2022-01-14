@@ -1,5 +1,117 @@
 summary: Add 17th weekly update
-notes: ""
+notes: |
+  ---
+  title: 'SAOC LLDB D integration: 17th Weekly Update'
+  date: '2022-01-14T20:49:00+01:00'
+  tags: ['saoc', 'saoc2021', 'dlang', 'llvm', 'lldb', 'debug', 'debugging', 'dwarf']
+  description: "This post describes what I've done on the 17th week of the
+  Symmetry Autumn of Code 2021, including upstream patches update on the D
+  demangler and start implementation of support for derived types and more
+  decoupling on the Clang DWARF parser."
+  ---
+
+  Hi D community!
+
+  Sorry for being late. I'm here again, to describe what I've done during the
+  seventeenth week of Symmetry Autumn of Code.
+
+  ## LLVM upstream updates
+
+  This week I finished working on the three patches I was working about
+  demangling and finally merged them in the LLVM upstream:
+
+  - https://reviews.llvm.org/D111416
+  - https://reviews.llvm.org/D111417
+  - https://reviews.llvm.org/D111419
+
+  I also added another trivial patch to pass values by reference instead of a
+  pointer, requested by dblaikie:
+
+  - https://reviews.llvm.org/D117046
+
+  ### Bug on LLVM + Clang 13
+
+  Before merging, I always run the sanitizer on the whole test suite and the
+  fuzzer I integrated, although I found a regression on recent LLVM + Clang
+  builds with the sanitizer arguments. You can read more about the issue in
+  [this](https://reviews.llvm.org/D102453) patch. Briefly, the problem was that
+  LLVM is compiled with `-fPIC -fno-semantic-interposition` on LLVM + Clang
+  13.0.0, although, when combined with `-fsanitize` flags, the generated binary
+  has incorrect PC-relative relocation information on the generated calls making
+  it fails on linking. Thanks to [MaskRay](https://reviews.llvm.org/p/MaskRay/)
+  by helping me diving into this and fixing the problem!
+
+  I got surprised by the fact that this was not caught by the buildbots. When
+  comparing the LLVM released binaries and Arch Linux binaries the problem was
+  not reproducible. Probably the patched version Arch Linux distributes had
+  something to do with it but I didn't get a clear answer. This makes some sense
+  since Arch Linux compiles with SSP (strong stack protection) by default and
+  that adds extra calls that, when compiled with `-fPIC` seem to be also
+  PC-relative.
+
+  That regression made me creating two more trivial patches:
+
+  - https://reviews.llvm.org/D117144
+  - https://reviews.llvm.org/D117145
+
+  ## Extending dumping for derived types
+
+  I started tinkering with derived types, more specifically with `alias`. The
+  same with built-in types the logic can be extended to other derived types
+  as well. In DWARF `DW_TAG_typedef_type` is generated whenever a variable is
+  typed with an `alias`. I did some basic logic to make it work, although I need
+  to do some decoupling from Clang due to type forwarding.
+
+  I still need to understand how types are forwarded in DWARF, because the types
+  are read sequentially and a `DW_TAG_typedef_type` can reference an address "in
+  the future" that points to a `DW_TAG_base_type` which need to be resolved
+  later. I tried to search how Go plugin did that ([see
+  diff](https://github.com/llvm/llvm-project/commit/77198bc79b54267f2ce981c3a6c9c0d6384cac01#diff-72ec6c46e57cb00bb94855699a3a5d8d268a73e8ec226404d5f9b175de7d1d19))
+  but `dwarf->ResolveTypeUID` got removed.
+
+  You can consult the source code
+  [here](https://github.com/devtty63/llvm-project/commits/lldb-d/implement-typesystem-d).
+
+  ## More decoupling on the Clang DWARF Parser
+
+  I was about to decouple `GetContainingClangModuleDIE` and
+  `GetContainingClangModule` functions, although, my test suite is not running
+  correctly. LLDB test suite is a nightmare to me and I'm trying to push forward
+  on more clarity about which tests are marked as Unsupported or Expected to
+  Fail. I always had this problem since I started working on the LLDB tree
+  although I took the risk of ignoring them. I couldn't contact `lldb-dev` since
+  there is some restrictions on the mailing list due to spam and I got not answer
+  on my subscription request. Finally LLVM moved to
+  [discourse](https://llvm.discourse.group/), so I created two posts there to
+  describe my problems:
+
+  - https://llvm.discourse.group/t/lldb-buildbots-verbosity/5253
+  - https://llvm.discourse.group/t/lldb-test-suite-is-failing-on-linux-x86-64/5696
+
+  The first one already got some attention and
+  [JDevlieghere](https://reviews.llvm.org/p/JDevlieghere/) already submitted a
+  patch. I had no idea that the buildbot infrastructure was open source. I
+  already have some patches to submit about this topic, including activating Lua
+  tests, which is failing locally and not tested on the buildbots.
+
+  ## What is next?
+
+  Well, I plan to continue working on the custom DWARF Parser for D, including
+  adding support for other basic stuff like functions. Even though this is the
+  last weekly update, I'm going to try to keep up with some changes on the LLVM
+  tree. My goal is to have some minimum support (roughly the same of GDB) on
+  LLDB 14. I will try to submit the bare minimum support which need to include
+  some workarounds on the Clang DWARF Parser. This may not be accepted due to
+  that, but if it does, we can have custom formatters officially on LLDB. I will
+  try to provide soon some builds for the community of
+  [this](https://github.com/devtty63/llvm-project/commits/lldb-d/main) branch,
+  although.
+
+  You can also read this on the D programming language forum,
+  [here](https://forum.dlang.org/thread/rdjlagyrftqqxlmsjjwq@forum.dlang.org),
+  and discuss there!
+
+  Read about the [previous week](../d-saoc-2021-16/).
 tags:
 - community
 project: saoc2021
