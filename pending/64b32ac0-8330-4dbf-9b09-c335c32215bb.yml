@@ -1,0 +1,13 @@
+summary: Extend __builtins.d with core.math builtins
+notes: ""
+tags:
+- dlang
+- druntime
+project: contrib
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2022-01-17T04:23:30.072959276Z
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
