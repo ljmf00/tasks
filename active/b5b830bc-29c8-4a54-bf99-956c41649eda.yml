@@ -1,5 +1,28 @@
 summary: GH/ljmf00/lsferreira.net/#21 Implement projects page
-notes: ""
+notes: |+
+  - dlang demangler reimplementation
+  - lldb integration
+  - automated dotfiles/infrastructure
+  - dsqlinter toy incomplete parser
+  - aurorafw toy general purpose framework
+  - codacy open source tools
+  - arch linux aur packages
+  - dwarf docs
+  - happiness website
+  - be happy flutter app
+  - vscode bettercoder extension
+  - HTML5 web player fork
+  - decent pacman wrapper
+  - liblstparse parsing LST coverage files
+  - convcov report tool
+  - riverd bindings
+  - archlinux dockerfiles
+  - rts5139 maintenance
+  - tedit incomplete text editor
+  - fuzzy theme
+  - raul theme
+  - DerelictPA bindings
+
 tags:
 - blog
 - github
