@@ -20,4 +20,4 @@ repos:
     args: [--branch, master]
 ci:
   autofix_prs: false
-  autoupdate_commit_msg: 'pre-commit: bump repositories'
+  autoupdate_commit_msg: 'chore(pre-commit): bump repositories'
