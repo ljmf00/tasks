@@ -2,7 +2,7 @@ summary: 'hidapi: add initial implementation'
 notes: ""
 tags: []
 project: hacktoberfest
-priority: P2
+priority: P3
 delegatedto: ""
 subtasks: []
 dependencies: []
