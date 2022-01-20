@@ -1,5 +1,73 @@
 summary: Write final report
-notes: ""
+notes: |+
+  # SAOC LLDB D integration: 4th Milestone
+
+  Hi SAOC Judge Team,
+
+  I'm here to report what I've done during the 4th Milestone on the Symmetry
+  Autumn of Code and describe my overall experience with SAOC.
+
+  ## 4th Milestone Report
+
+  ### Summary
+  #### Weekly updates
+
+  You can find my weekly updates either on the forum or on my blog:
+
+  - Week 14:
+  [https://forum.dlang.org/thread/ynyjkvhgetyubpaffzxu@forum.dlang.org#post-ynyjkvhgetyubpaffzxu:40forum.dlang.org](forum)
+  | [https://lsferreira.net/posts/d-saoc-2021-14](blog)
+  - Week 15:
+  [https://forum.dlang.org/thread/snxohwybymmaqvqprapo@forum.dlang.org](forum)
+  | [https://lsferreira.net/posts/d-saoc-2021-15](blog)
+  - Week 16:
+  [https://forum.dlang.org/thread/cfeuzatpyknarblnsoti@forum.dlang.org#post-cfeuzatpyknarblnsoti:40forum.dlang.org](forum)
+  | [https://lsferreira.net/posts/d-saoc-2021-16](blog)
+  - Week 17:
+  [https://forum.dlang.org/thread/rdjlagyrftqqxlmsjjwq@forum.dlang.org](forum)
+  | [https://lsferreira.net/posts/d-saoc-2021-17](blog)
+
+  #### Patches / Bugs / Mailing list threads
+
+  - https://reviews.llvm.org/D116136
+  - https://reviews.llvm.org/D116138
+  - https://reviews.llvm.org/D116279
+  - https://github.com/ldc-developers/ldc/pull/3891
+  - https://github.com/ldc-developers/ldc/pull/3892
+  - https://reviews.llvm.org/D117046
+  - https://reviews.llvm.org/D117144
+  - https://reviews.llvm.org/D117145
+  - https://llvm.discourse.group/t/lldb-buildbots-verbosity/5253
+  - https://llvm.discourse.group/t/lldb-test-suite-is-failing-on-linux-x86-64/5696
+
+  ### Description
+
+  During this month I've been working on extending the D `TypeSystem` and
+  `DWARFASTParser` to support type name and value dumping. This milestone was
+  made particularly of a lot of research on how `TypeSystem` and `DAWRFASTParser`
+  talk together and understand the interdependency of each part along with the
+  implementation of dumping types.
+
+  Another chunk of my journey throughout this milestone was about completing some
+  missing parts on patches I made in the past and move them forward in order to
+  be merged. I worked mainly on support for `DW_TAG_immutable_type` DWARF tag,
+  continued the demangler patch _train_ and worked on some other misc patches for
+  Clang DWARF Parser decoupling.
+
+  As an extra, since I'm adding support for D demangling, I decided to add proper
+  support for other demanglers other than Itanium to be exported/printed on LLD
+  linker that includes not only D demangling but also Rust and Microsoft
+  demangler.
+
+  #### More in-depth
+
+
+
+  ## My overall experience with SAOC
+
+
+
+
 tags:
 - community
 project: saoc2021
