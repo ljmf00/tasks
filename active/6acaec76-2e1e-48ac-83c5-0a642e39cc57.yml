@@ -57,9 +57,105 @@ notes: |+
   As an extra, since I'm adding support for D demangling, I decided to add proper
   support for other demanglers other than Itanium to be exported/printed on LLD
   linker that includes not only D demangling but also Rust and Microsoft
-  demangler.
+  demanglers.
+
+  The rest of the code that are not in the list of patches, are implemented
+  [here](https://github.com/devtty63/llvm-project/commits/lldb-d/implement-typesystem-d).
 
   #### More in-depth
+
+  I started the first week implementing some basic helpers on DType wrapper to
+  match with LLDB interfaces, including `lldb::Format`, `lldb::Encoding`,
+  `lldb::BasicType` and extra helpers to fetch builtin type names. I also
+  implemented some basic type name dumping for `bool` type.
+
+  In the meantime, I needed to add support for `char8_t` basic type (since D char
+  is a UTF-8 type) and ended up discovering the missing piece to fix UTF-8
+  encoding on LLDB. This was not a big issue, since most of `char8_t` will
+  benefit from built-in custom formatters that overrides the default behaviour,
+  but for new languages without summary formatters this was an issue.
+
+  This first week was also about some investigation on how `TypeSystem` and
+  `DWARFASTParser` communicates. Understanding how those two interfaces work
+  together was important to properly implement dumping. I actually thought that
+  dumping was all made by hand, but fortunately there is already common routines
+  such as `DumpDataExtractor`, `DumpSummary` and `DumpTypeDescription` to handle
+  that and format the output according to the LLDB style.
+
+  In the next week I extended dumping to also include variable values and
+  started adding support for the rest of the types which were finished in the 3rd
+  week.
+
+  I had a major problem in the second week with `real`, a platform-dependent
+  type. According to the specification, I got a bit confused and I still think it
+  is not correct/explicit enough, although, after having some conversation with
+  Iain, I found out that D just ends up following `long double` behaviour.
+
+  I didn't get this right away as I tried fetching the size of the mantissa on
+  different platforms and got different values on e.g. RISC-V. After some
+  investigation I found out that LDC was actually implementing a workaround to
+  this, by doing it manually. The proper way would be to use `clang::TargetInfo`
+  which implements all the variations of `long double` for the supported
+  architectures of LLVM. Currently LDC supports most of them, but only has logic
+  for 4 or so. I made a PR to specifically fix RISC-V, although I expect this to
+  fail on future X or Y architectures.
+
+  For now I'm going to stick with an hardcoded version using the bit size and the
+  target triple, but the ultimate goal would be to use `clang::TargetInfo`.
+
+  You can read more about this on the 15th weekly update post.
+
+  Also in that week, I decided to add support for other demanglers on LLD. On the
+  next release of LLD, if the D demangler can demangle the symbols, the output,
+  instead of looking like this:
+
+  ```
+  app.d:16: error: undefined reference to '_D3app7noexistFZi'
+  ```
+
+  It will look something like this:
+
+  ```
+  app.d:16: error: undefined reference to 'app.noexist()'
+  ```
+
+  On the third week I finished extending the dumping system to the rest of the
+  builtin types. The output example is the following:
+
+  ```
+  (lldb) ta v
+  Global variables for app.d in app:
+  (int) app.int42_gvar = -42
+  (ulong) app.ulong42_gvar = 42
+  (uint) app.uint_gvar = 0
+  (uint) app.uint42_gvar = 42
+  (double) app.double_42_gvar = -42
+  (real) app.real42_gvar = 42
+  (long) app.long42_gvar = -42
+  (dchar) app.d = U+0x00000064
+  (ulong) app.ulong_gvar = 0
+  (char) app.c = 0x63
+  (bool) app.true_gvar = true
+  (ushort) app.ushort_gvar = 0
+  (byte) app.byte42_gvar = d6
+  (double) app.double_gvar = 0
+  (long) app.long_gvar = 0
+  (double) app.double42_gvar = 42
+  (float) app.float42_gvar = 42
+  (wchar) app.w = U+0077
+  ```
+
+  This output is obviously without the D custom formatters implemented on the 2nd
+  milestone, which need a bit more information currently unavailable on this new
+  implementation to be triggered.
+
+  During that week I also amended some changes about the demangler and support
+  for `DW_TAG_immutable_type` tag on LLVM core including the IR and
+  `llvm-dwarfdump`, crucial to add support for debug info with derived types on
+  LDC.
+
+  In the last week I finished 4 more patches about the demangler and self merged
+  them into the official tree.
 
 
 
