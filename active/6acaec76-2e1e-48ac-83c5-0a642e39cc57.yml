@@ -157,7 +157,27 @@ notes: |+
   In the last week I finished 4 more patches about the demangler and self merged
   them into the official tree.
 
+  Before merging, since most of the buildbots only run on master, the maintainer
+  is responsible for running the required tests. I often run the sanitizer and
+  fuzzer before merging, although this time I found a regression on LLVM 13.0. To
+  explain it briefly, `-fno-semantic-interposition` optimization caused problems
+  with ELF interposition, when adding extra calls that are not PC-relative. You
+  can read more about the problem on the last weekly report.
 
+  I also started working on extending the dumping system to derived types,
+  although, I didn't finish the implementation. For now, it works for most of the
+  derived types as normal base types. On of the problems I found is decoupling
+  issues with the Clang DWARF Parser.
+
+  The last week was kinda unproductive due to a lot of side effect problems with
+  testsuite. You can read more about those on the last weekly report too.
+
+  ### Conclusion
+
+  According to the milestones I presented last month, I covered only a fraction
+  of it, although, leaving the core problem (type and value dumping) solved. My
+  idea on presenting those steps were more like a task list to have minimum
+  features to implement expressions, although far from being doable in a month.
 
   ## My overall experience with SAOC
 
