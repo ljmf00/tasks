@@ -1,5 +1,5 @@
 summary: Write final report
-notes: |+
+notes: |
   # SAOC LLDB D integration: 4th Milestone
 
   Hi SAOC Judge Team,
@@ -177,13 +177,46 @@ notes: |+
   According to the milestones I presented last month, I covered only a fraction
   of it, although, leaving the core problem (type and value dumping) solved. My
   idea on presenting those steps were more like a task list to have minimum
-  features to implement expressions, although far from being doable in a month.
+  features to implement expressions, although far from being doable in a month,
+  as I mentioned on the 3rd milestone report. After all, I'm pretty happy with
+  the outcome.
 
-  ## My overall experience with SAOC
+  ## My overall experience with SAoC
 
+  ### Introduction
 
+  First of all, I would like to thank The D Language Foundation and Symmetry
+  Investments for sponsoring this event and incentivise my brain to learn a lot
+  with this project.
 
+  I'm very proud of my overall outcome and the enormous knowledge I managed to
+  acquire in a lot of fields I wanted to learn and specialize, including deep
+  understanding of the DWARF standard, a wider perspective of the entire LLVM
+  infrastructure (not only LLDB, but also the LLVM core and the related
+  tool-chains around it such as `llvm-dwarfdump` and `lld`) and how debuggers
+  work and interact with the attached process and the kernel itself. In parallel,
+  this project also triggered me some interest on other fields such as LLVM
+  optimization/transformation passes that I also tried to learn and understand,
+  even though not related with the project itself, and the importance of fuzzing
+  a codebase.
 
+  ### During the event
+
+  #### Demangler port
+
+  #### Synthetic formatters and language plugin
+
+  #### D `TypeSystem` and `DWARFASTParser`
+
+  #### Extra work
+
+  ##### Improve DWARF generator of DMD/LDC
+
+  ##### Other relevant work
+
+  ### Challenges and difficulties
+
+  ### Conclusion
 tags:
 - community
 project: saoc2021
