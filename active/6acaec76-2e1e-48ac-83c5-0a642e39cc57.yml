@@ -1,5 +1,5 @@
 summary: Write final report
-notes: |
+notes: |+
   # SAOC LLDB D integration: 4th Milestone
 
   Hi SAOC Judge Team,
@@ -189,9 +189,9 @@ notes: |
   Investments for sponsoring this event and incentivise my brain to learn a lot
   with this project.
 
-  I'm very proud of my overall outcome and the enormous knowledge I managed to
-  acquire in a lot of fields I wanted to learn and specialize, including deep
-  understanding of the DWARF standard, a wider perspective of the entire LLVM
+  I'm proud of my overall outcome and the enormous knowledge I managed to acquire
+  in a lot of fields I wanted to learn and specialize, including deep
+  understanding of the DWARF standard, a wider perspective of the LLVM
   infrastructure (not only LLDB, but also the LLVM core and the related
   tool-chains around it such as `llvm-dwarfdump` and `lld`) and how debuggers
   work and interact with the attached process and the kernel itself. In parallel,
@@ -204,9 +204,58 @@ notes: |
 
   #### Demangler port
 
+  I started the event porting libiberty demangler from GCC tree. It was a
+  straightforward task at the beginning (I did a patch with the whole port) but
+  ended up having a lot of _bureaucracy_ due to licensing and a lot of changes
+  came in the way. I ended up implementing a slightly different version during
+  the event as changes got requested from the LLVM maintainers. Even though this
+  was/is a slow task, I acknowledged that it is better this way, as we can
+  deviate a bit from the previous implementation and add some discuss on top to
+  improve a next iteration of the whole _"algorithm"_.
+
   #### Synthetic formatters and language plugin
 
+  After adding support for the demangler in LLVM, I started working on the second
+  milestone, which was about adding support for pretty printing on types not
+  recognized by the current C parser. I added support for pretty printing arrays
+  and the special case of strings and individual characters, dependening on its
+  encoding.
+
+  After doing some investigation on how these formatters are implemented in tree,
+  it was fairly straightforward to add them, although I found out some things to
+  improve on the compilers DWARF generator, that was not conformat with the DWARF
+  standard or generating old C style types. I will describe that a bit more on
+  the "Extra work" section.
+
   #### D `TypeSystem` and `DWARFASTParser`
+
+  In the milestone 3 I started implementing a whole new `TypeSystem` and
+  `DWARFASTParser`. At the beginning I though this was as straightforward as it
+  was with the previous milestones, although due to lack of knowledge on how LLDB
+  was structured and some overestimation, this ended up being the largest task
+  throughout the event. I talked to some LLDB maintainers and presented the idea
+  on the mailing list but they told me that expression parsing is a whole new
+  topic to cover, and rather focus on the essential dependencies, the
+  `TypeSystem` and the `DWARFASTParser` for D.
+
+  I started looking into the current implementation of those interfaces for Clang
+  and looked into a previously implemented one made for Go, that ended up being
+  deprecated due to lack of maintenance. I started understanding a bit about how
+  they interact to each other and ultimately, interact with the other LLDB
+  interfaces.
+
+  Looking into the Go implementation more precisely, I found out that a lot of
+  code is copy pasted from the Clang implementation and a good chunk of it is
+  very outdated, using methods no longer present in the current LLDB
+  implementation. For those repeated pieces, I tried to make some patches to to
+  upstream to decouple them, in order to be used in the future for, not only D,
+  but any new language that could be added to LLDB.
+
+  In parallel to that, I implemented a basic `TypeSystem` and `DWARFASTParser`
+  and slowly added features on top. Mainly, what I implemented there was support
+  for built-in types. With the current implementation, we can read all the
+  built-in base types (only global/thread-local, although it should be pretty
+  straightforward to add it on function variables too).
 
   #### Extra work
 
@@ -216,7 +265,13 @@ notes: |
 
   ### Challenges and difficulties
 
+  - despite GCC licensing issues
+  - Wrong calling convention on DMD
+  - real type problem
+
   ### Conclusion
+
+
 tags:
 - community
 project: saoc2021
