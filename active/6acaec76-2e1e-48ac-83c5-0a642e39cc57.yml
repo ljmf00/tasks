@@ -1,6 +1,6 @@
 summary: Write final report
-notes: |+
-  # SAOC LLDB D integration: 4th Milestone
+notes: |
+  # SAOC LLDB D integration: 4th Milestone and final thoughts
 
   Hi SAOC Judge Team,
 
@@ -189,25 +189,16 @@ notes: |+
   Investments for sponsoring this event and incentivise my brain to learn a lot
   with this project.
 
-  I'm proud of my overall outcome and the enormous knowledge I managed to acquire
-  in a lot of fields I wanted to learn and specialize, including deep
-  understanding of the DWARF standard, a wider perspective of the LLVM
-  infrastructure (not only LLDB, but also the LLVM core and the related
-  tool-chains around it such as `llvm-dwarfdump` and `lld`) and how debuggers
-  work and interact with the attached process and the kernel itself. In parallel,
-  this project also triggered me some interest on other fields such as LLVM
-  optimization/transformation passes that I also tried to learn and understand,
-  even though not related with the project itself, and the importance of fuzzing
-  a codebase.
-
   ### During the event
 
   #### Demangler port
 
-  I started the event porting libiberty demangler from GCC tree. It was a
-  straightforward task at the beginning (I did a patch with the whole port) but
-  ended up having a lot of _bureaucracy_ due to licensing and a lot of changes
-  came in the way. I ended up implementing a slightly different version during
+  I started the event porting libiberty demangler from GCC tree to LLVM, by
+  adapting it to be more C++ish and use the LLVM style along with some minor
+  changes. It was a straightforward task at the beginning (I did a patch with the
+  whole port) but ended up having a lot of _bureaucracy_ due to licensing and a
+  lot of changes came in the way, including splitting the single patch into
+  several small ones. I ended up implementing a slightly different version during
   the event as changes got requested from the LLVM maintainers. Even though this
   was/is a slow task, I acknowledged that it is better this way, as we can
   deviate a bit from the previous implementation and add some discuss on top to
@@ -261,17 +252,79 @@ notes: |+
 
   ##### Improve DWARF generator of DMD/LDC
 
+  I did significant improvements to the DWARF generator on DMD that I wasn't
+  planning to. I believe this was a really important thing to do, in order to
+  either LLDB but also GDB report information more accurately. Most of the work
+  was not a requirement, since I could rely on LDC implementation, but
+  realistically speaking, having a fairly decent debug info generator in the
+  reference compiler is desired. You can read more about those improvements in
+  the milestone 2 report. There is still a lot of problems I, unfortunately,
+  didn't cover, such as wrong address ranges on DWARF 5, which I don't fully
+  understand, although debuggers can safely ignore those errors and proceed to
+  what they understand.
+
+  I also did some nit changes on LDC tree, but most of them is stalled due to
+  some requirements on the upstream LLVM, such as support for immutable type
+  qualifiers on the LLVM IR debug info. You can see the issues I created on LDC
+  and the associated patches on LLVM. I also tried to add support for DWARF
+  column DECL but was a bit too complex to do it, so I decided to move on, on
+  that particular change.
+
   ##### Other relevant work
+
+  As describe in the 4th milestone report (above this) I added support for D
+  demangling on LLD linker. I also did some improvement changes on GCC tree
+  about the demangler I ported and did some changes along the way on LLVM/LLDB
+  tree about some unicode issues throughout the event.
 
   ### Challenges and difficulties
 
-  - despite GCC licensing issues
-  - Wrong calling convention on DMD
-  - real type problem
+  Despite the GCC and LLVM licensing issues, I had some challenges and
+  difficulties along the way to solve. The biggest challenge was certainly
+  discovering how LLVM works with only documentation and the codebase. Luckily,
+  LLVM is a fairly big project with really good documentation, even about
+  internal workflow, although LLDB itself lacks some, especially about the
+  internal workflow.
+
+  I also had some issues on interpreting D ABI/specification, primarily the
+  calling convention and implementation defined types with platform-dependent bit
+  size, like `real`. I tried to fix D calling convention although without
+  success.
+
+  At the beginning I also had some difficulties understand DWARF, but turns out
+  to be a very simple standard. The most complex part that I didn't dig into, is
+  address ranges, exception handling and other stuff that DWARF includes/cover
+  that wasn't either worth for this work or already abstracted by the LLDB or
+  compiler.
+
+  ### Notes for the next steps
+
+  There is some work that wasn't done before submitting this to the upstream.
+  Mainly, the `TypeSystem` and `DWARFASTParser` lacks parsing/understanding
+  function, non built-in types and needs some solidification of derived type
+  support. I would consider this the bare minimum to add those interfaces to the
+  official tree.
+
+  Another thing to consider, is try to upstream the synthetic formatters. They
+  require a workaround patch in order to work and may fail some tests on the LLDB
+  test suite. This is something I can try to focus on my free time, but a very
+  important step to make official LLDB comparable to GDB.
+
+  I did some other notes on the last weekly report, but those two are crucial.
 
   ### Conclusion
 
-
+  I hope to continue this project on my free time, although I'm proud of my
+  overall outcome and the enormous knowledge I managed to acquire in a lot of
+  fields I wanted to learn and specialize, including deep understanding of the
+  DWARF standard, a wider perspective of the LLVM infrastructure (not only LLDB,
+  but also the LLVM core and the related tool-chains around it such as
+  `llvm-dwarfdump` and `lld`) and how debuggers work and interact with the
+  attached process and the kernel itself. In parallel, this project also
+  triggered me some interest on other fields such as LLVM
+  optimization/transformation passes that I also tried to learn and understand,
+  even though not related with the project itself, and the importance of fuzzing
+  a codebase.
 tags:
 - community
 project: saoc2021
