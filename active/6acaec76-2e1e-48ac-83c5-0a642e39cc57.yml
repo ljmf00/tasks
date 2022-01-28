@@ -78,11 +78,11 @@ notes: |
   This first week was also about some investigation on how `TypeSystem` and
   `DWARFASTParser` communicates. Understanding how those two interfaces work
   together was important to properly implement dumping. I actually thought that
-  dumping was all made by hand, but fortunately there is already common routines
+  dumping was all made by hand, but fortunately, there is already common routines
   such as `DumpDataExtractor`, `DumpSummary` and `DumpTypeDescription` to handle
   that and format the output according to the LLDB style.
 
-  In the next week I extended dumping to also include variable values and
+  In the next week, I extended dumping to also include variable values and
   started adding support for the rest of the types which were finished in the 3rd
   week.
 
@@ -93,14 +93,14 @@ notes: |
 
   I didn't get this right away as I tried fetching the size of the mantissa on
   different platforms and got different values on e.g. RISC-V. After some
-  investigation I found out that LDC was actually implementing a workaround to
+  investigation, I found out that LDC was actually implementing a workaround to
   this, by doing it manually. The proper way would be to use `clang::TargetInfo`
   which implements all the variations of `long double` for the supported
-  architectures of LLVM. Currently LDC supports most of them, but only has logic
+  architectures of LLVM. Currently, LDC supports most of them, but only has logic
   for 4 or so. I made a PR to specifically fix RISC-V, although I expect this to
   fail on future X or Y architectures.
 
-  For now I'm going to stick with an hardcoded version using the bit size and the
+  For now, I'm going to stick with a hardcoded version using the bit size and the
   target triple, but the ultimate goal would be to use `clang::TargetInfo`.
 
   You can read more about this on the 15th weekly update post.
@@ -119,7 +119,7 @@ notes: |
   app.d:16: error: undefined reference to 'app.noexist()'
   ```
 
-  On the third week I finished extending the dumping system to the rest of the
+  In the third week, I finished extending the dumping system to the rest of the
   builtin types. The output example is the following:
 
   ```
@@ -146,7 +146,7 @@ notes: |
   ```
 
   This output is obviously without the D custom formatters implemented on the 2nd
-  milestone, which need a bit more information currently unavailable on this new
+  milestone, which needs a bit more information currently unavailable on this new
   implementation to be triggered.
 
   During that week I also amended some changes about the demangler and support
@@ -154,11 +154,11 @@ notes: |
   `llvm-dwarfdump`, crucial to add support for debug info with derived types on
   LDC.
 
-  In the last week I finished 4 more patches about the demangler and self merged
+  In the last week, I finished 4 more patches about the demangler and self merged
   them into the official tree.
 
   Before merging, since most of the buildbots only run on master, the maintainer
-  is responsible for running the required tests. I often run the sanitizer and
+  is responsible for running the required tests. I often run the sanitiser and
   fuzzer before merging, although this time I found a regression on LLVM 13.0. To
   explain it briefly, `-fno-semantic-interposition` optimization caused problems
   with ELF interposition, when adding extra calls that are not PC-relative. You
@@ -166,17 +166,17 @@ notes: |
 
   I also started working on extending the dumping system to derived types,
   although, I didn't finish the implementation. For now, it works for most of the
-  derived types as normal base types. On of the problems I found is decoupling
+  derived types as normal base types. One of the problems I found is decoupling
   issues with the Clang DWARF Parser.
 
   The last week was kinda unproductive due to a lot of side effect problems with
-  testsuite. You can read more about those on the last weekly report too.
+  test suite. You can read more about those in the last weekly report too.
 
   ### Conclusion
 
   According to the milestones I presented last month, I covered only a fraction
   of it, although, leaving the core problem (type and value dumping) solved. My
-  idea on presenting those steps were more like a task list to have minimum
+  idea on presenting those steps was more like a task list to have minimum
   features to implement expressions, although far from being doable in a month,
   as I mentioned on the 3rd milestone report. After all, I'm pretty happy with
   the outcome.
@@ -194,25 +194,25 @@ notes: |
   #### Demangler port
 
   I started the event porting libiberty demangler from GCC tree to LLVM, by
-  adapting it to be more C++ish and use the LLVM style along with some minor
+  adapting it to be more C++ish and using the LLVM style along with some minor
   changes. It was a straightforward task at the beginning (I did a patch with the
   whole port) but ended up having a lot of _bureaucracy_ due to licensing and a
   lot of changes came in the way, including splitting the single patch into
   several small ones. I ended up implementing a slightly different version during
   the event as changes got requested from the LLVM maintainers. Even though this
   was/is a slow task, I acknowledged that it is better this way, as we can
-  deviate a bit from the previous implementation and add some discuss on top to
-  improve a next iteration of the whole _"algorithm"_.
+  deviate a bit from the previous implementation and add some discussion on top
+  to improve a next iteration of the whole _"algorithm"_.
 
   #### Synthetic formatters and language plugin
 
   After adding support for the demangler in LLVM, I started working on the second
   milestone, which was about adding support for pretty printing on types not
-  recognized by the current C parser. I added support for pretty printing arrays
-  and the special case of strings and individual characters, dependening on its
+  recognized by the current C parser. I added support for pretty-printing arrays
+  and the special case of strings and individual characters, depending on its
   encoding.
 
-  After doing some investigation on how these formatters are implemented in tree,
+  After doing some investigation on how these formatters are implemented in-tree,
   it was fairly straightforward to add them, although I found out some things to
   improve on the compilers DWARF generator, that was not conformat with the DWARF
   standard or generating old C style types. I will describe that a bit more on
@@ -220,8 +220,8 @@ notes: |
 
   #### D `TypeSystem` and `DWARFASTParser`
 
-  In the milestone 3 I started implementing a whole new `TypeSystem` and
-  `DWARFASTParser`. At the beginning I though this was as straightforward as it
+  In the 3rd milestone, I started implementing a whole new `TypeSystem` and
+  `DWARFASTParser`. In the beginning I thought this was as straightforward as it
   was with the previous milestones, although due to lack of knowledge on how LLDB
   was structured and some overestimation, this ended up being the largest task
   throughout the event. I talked to some LLDB maintainers and presented the idea
@@ -232,15 +232,15 @@ notes: |
   I started looking into the current implementation of those interfaces for Clang
   and looked into a previously implemented one made for Go, that ended up being
   deprecated due to lack of maintenance. I started understanding a bit about how
-  they interact to each other and ultimately, interact with the other LLDB
+  they interact with each other and ultimately, interact with the other LLDB
   interfaces.
 
   Looking into the Go implementation more precisely, I found out that a lot of
-  code is copy pasted from the Clang implementation and a good chunk of it is
+  code is copy-pasted from the Clang implementation and a good chunk of it is
   very outdated, using methods no longer present in the current LLDB
-  implementation. For those repeated pieces, I tried to make some patches to to
-  upstream to decouple them, in order to be used in the future for, not only D,
-  but any new language that could be added to LLDB.
+  implementation. For those repeated pieces, I tried to make some patches to the
+  upstream to decouple them, to be used in the future for, not only D, but any
+  new language that could be added to LLDB.
 
   In parallel to that, I implemented a basic `TypeSystem` and `DWARFASTParser`
   and slowly added features on top. Mainly, what I implemented there was support
@@ -253,17 +253,16 @@ notes: |
   ##### Improve DWARF generator of DMD/LDC
 
   I did significant improvements to the DWARF generator on DMD that I wasn't
-  planning to. I believe this was a really important thing to do, in order to
-  either LLDB but also GDB report information more accurately. Most of the work
-  was not a requirement, since I could rely on LDC implementation, but
-  realistically speaking, having a fairly decent debug info generator in the
-  reference compiler is desired. You can read more about those improvements in
-  the milestone 2 report. There is still a lot of problems I, unfortunately,
-  didn't cover, such as wrong address ranges on DWARF 5, which I don't fully
-  understand, although debuggers can safely ignore those errors and proceed to
-  what they understand.
+  planning to. I believe this was a really important thing to do, to either LLDB
+  but also GDB report information more accurately. Most of the work was not a
+  requirement, since I could rely on LDC implementation, but realistically
+  speaking, having a fairly decent debug info generator in the reference compiler
+  is desired. You can read more about those improvements in the milestone 2
+  report. There is still a lot of problems I, unfortunately, didn't cover, such
+  as wrong address ranges on DWARF 5, which I don't fully understand, although
+  debuggers can safely ignore those errors and proceed to what they understand.
 
-  I also did some nit changes on LDC tree, but most of them is stalled due to
+  I also did some nit changes on LDC tree, but most of them are stalled due to
   some requirements on the upstream LLVM, such as support for immutable type
   qualifiers on the LLVM IR debug info. You can see the issues I created on LDC
   and the associated patches on LLVM. I also tried to add support for DWARF
@@ -272,10 +271,10 @@ notes: |
 
   ##### Other relevant work
 
-  As describe in the 4th milestone report (above this) I added support for D
-  demangling on LLD linker. I also did some improvement changes on GCC tree
-  about the demangler I ported and did some changes along the way on LLVM/LLDB
-  tree about some unicode issues throughout the event.
+  As described in the 4th milestone report (above this) I added support for D
+  demangling on LLD linker. I also did some improvement changes on GCC tree about
+  the demangler I ported and did some changes along the way on LLVM/LLDB tree
+  about some unicode issues throughout the event.
 
   ### Challenges and difficulties
 
@@ -291,9 +290,9 @@ notes: |
   size, like `real`. I tried to fix D calling convention although without
   success.
 
-  At the beginning I also had some difficulties understand DWARF, but turns out
-  to be a very simple standard. The most complex part that I didn't dig into, is
-  address ranges, exception handling and other stuff that DWARF includes/cover
+  At the beginning I also had some difficulties understanding DWARF, but turns
+  out to be a very simple standard. The most complex part that I didn't dig into,
+  is address ranges, exception handling and other stuff that DWARF includes/cover
   that wasn't either worth for this work or already abstracted by the LLDB or
   compiler.
 
@@ -301,27 +300,27 @@ notes: |
 
   There is some work that wasn't done before submitting this to the upstream.
   Mainly, the `TypeSystem` and `DWARFASTParser` lacks parsing/understanding
-  function, non built-in types and needs some solidification of derived type
+  function, non-built-in types and needs some solidification of derived type
   support. I would consider this the bare minimum to add those interfaces to the
   official tree.
 
-  Another thing to consider, is try to upstream the synthetic formatters. They
+  Another thing to consider, is trying to upstream the synthetic formatters. They
   require a workaround patch in order to work and may fail some tests on the LLDB
-  test suite. This is something I can try to focus on my free time, but a very
+  test suite. This is something I can try to focus in my free time, but a very
   important step to make official LLDB comparable to GDB.
 
   I did some other notes on the last weekly report, but those two are crucial.
 
   ### Conclusion
 
-  I hope to continue this project on my free time, although I'm proud of my
+  I hope to continue this project in my free time, although I'm proud of my
   overall outcome and the enormous knowledge I managed to acquire in a lot of
-  fields I wanted to learn and specialize, including deep understanding of the
-  DWARF standard, a wider perspective of the LLVM infrastructure (not only LLDB,
-  but also the LLVM core and the related tool-chains around it such as
+  fields I wanted to learn and specialize in, including a deep understanding of
+  the DWARF standard, a wider perspective of the LLVM infrastructure (not only
+  LLDB, but also the LLVM core and the related tool-chains around it such as
   `llvm-dwarfdump` and `lld`) and how debuggers work and interact with the
   attached process and the kernel itself. In parallel, this project also
-  triggered me some interest on other fields such as LLVM
+  triggered me some interest in other fields such as LLVM
   optimization/transformation passes that I also tried to learn and understand,
   even though not related with the project itself, and the importance of fuzzing
   a codebase.
