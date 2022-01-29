@@ -1,6 +1,6 @@
 summary: Write about controversy around package managers lockfile
 notes: |+
-  # The controversy around package managers lockfile in libraries
+  # The controversy and misconception around package managers lockfile in libraries
 
   A lot of package managers use a lockfile mechanism to reliably reproduce their
   packages across different environments. This mechanism is used when other
@@ -15,16 +15,31 @@ notes: |+
   successfully the way is intended to be. Some lockfiles include other metadata
   about the package used such as checksums to ensure integrity.
 
-  This way, package managers can more easily replicate the same builds on
-  different environments.
-
   ### Advantages
 
+  One of the biggest advantages is to make deterministic dependency resolution.
+  This way, package managers can more easily replicate the same builds on
+  different environments. With that you can also build your own package more
+  consistently. Those both help users and developers seeking for problems and can
+  decrease test suite failures on development.
 
+  ### Security risk
 
-  ### Security disadvantages
+  It is straightforward to understand the advantages of a lockfile but some
+  people doesn't understand the _"disadvantages"_ and intentionally skip lockfiles
+  review, which is a tremendous bad idea, let me explain you why.
 
-
+  For example, GitHub has bad security issue related to detached references that
+  allows any user to create a fork of the repo and associate a commit to the
+  original repo. See the example of Linus Torvalds `linux` mirror with
+  [this](https://github.com/torvalds/linux/tree/8bcab0346d4fcf21b97046eb44db8cf37ddd6da0)
+  commit. Because git obviously allows anyone to create commits with any email,
+  GitHub automatically associate it as the real Linus Torvalds. So a user can
+  easily create a security vulnerability, bump a patch version and change the
+  commit hash on the lockfile accordingly, making a poisoned environment. This
+  can be easily fixed using GPG signatures. Linux releases, for example, are all
+  signed by a group of trusted keys. That way we can trust that release tag by
+  verifying the underlying signature.
 
   ## You might say, why not pin the versions, instead?
 
@@ -32,16 +47,31 @@ notes: |+
   followed by the package maintainers, breaking changes wouldn't be a big of a
   deal, although, the package will always be different. In a real world
   situation, breaking changes happens all the time, even if the intention is only
-  a bug fix. Sometimes things get out of control and because of the todays
+  a bug fix. Sometimes things get out of control and because of the today's
   systems complexity, regression bugs can easily happen.
 
   However, by specifying a version range covering patches or minor versions is
-  more practically useful for a situation where the latest non-breackable version
+  more practically useful for a situation where the latest non-breakable version
   is preferable.
 
-  Also, just pinning versions doesn't solve integrity issues.
+  Also, just pinning versions doesn't solve integrity issues and lockfiles does.
 
   ## Why reproducible builds are important?
+
+  Quoting Reproducible Builds project:
+
+  > The motivation behind the Reproducible Builds project is therefore to allow
+  > verification that no vulnerabilities or backdoors have been introduced during
+  > this compilation process. By promising identical results are always generated
+  > from a given source, this allows multiple third parties to come to a
+  > consensus on a “correct” result, highlighting any deviations as suspect and
+  > worthy of scrutiny.
+
+  You can read more about the project and their motivation along with tools to
+  make your builds more reproducible, [here](https://reproducible-builds.org/).
+
+  ## The controversy and misconception part
+
 
 tags:
 - blog
