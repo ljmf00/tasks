@@ -1,5 +1,5 @@
 summary: Write about controversy around package managers lockfile
-notes: |+
+notes: |
   # The controversy and misconception around package managers lockfile in libraries
 
   A lot of package managers use a lockfile mechanism to reliably reproduce their
@@ -36,10 +36,10 @@ notes: |+
   commit. Because git obviously allows anyone to create commits with any email,
   GitHub automatically associate it as the real Linus Torvalds. So a user can
   easily create a security vulnerability, bump a patch version and change the
-  commit hash on the lockfile accordingly, making a poisoned environment. This
-  can be easily fixed using GPG signatures. Linux releases, for example, are all
-  signed by a group of trusted keys. That way we can trust that release tag by
-  verifying the underlying signature.
+  commit hash on the lockfile accordingly, making it a poisoned environment,
+  without being too obvious. This can be easily fixed using GPG signatures. Linux
+  releases, for example, are all signed by a group of trusted keys. That way we
+  can trust that release tag by verifying the underlying signature.
 
   ## You might say, why not pin the versions, instead?
 
@@ -72,7 +72,47 @@ notes: |+
 
   ## The controversy and misconception part
 
+  Here is where the rant starts. A lot of package managers and maintainers have,
+  behind them, a strong philosophy about not including lockfiles for libraries.
+  This is something I can't really understand, given the rationale.
 
+  For example, Rust package manager, Cargo, doesn't not generate lockfiles by
+  default for libraries:
+
+  > This property is most desirable from applications and packages which are at
+  > the very end of the dependency chain (binaries). As a result, it is
+  > recommended that all binaries check in their Cargo.lock.
+  >
+  > For libraries the situation is somewhat different. A library is not only used
+  > by the library developers, but also any downstream consumers of the library.
+  > Users dependent on the library will not inspect the library’s Cargo.lock
+  > (even if it exists). This is precisely because a library should not be
+  > deterministically recompiled for all users of the library.
+
+  You can read more about this on "The Cargo Book",
+  [here](https://doc.rust-lang.org/cargo/faq.html#why-do-binaries-have-cargolock-in-version-control-but-not-libraries).
+
+  The last sentence is just wrong. Libraries should indeed by deterministically
+  recompiled to ensure consistency. That might not be true for the end user, but
+  this is essential for the library developers to detect if an introduced
+  change caused problems. Essentially, packages should test their environment
+  against their supported version ranges and their locked reproducible
+  environment.
+
+  Many other package managers does claim the same thing and it seems they justify
+  themselves with each other claims. The worst part is the fact that some
+  maintainers decline including lockfiles in their projects, without thinking
+  logically about the problem and consequences.
+
+  ## Conclusion
+
+  The conclusion is simple, please consider using a lockfile. Don't assume that
+  semantic versioning is followed strictly, because that is utopic. Also make
+  your testsuite deterministic and wide to your dependency requirements. Someone
+  from the outside will touch your library, possibly try to contribute and
+  complain about their testsuite failing due to an unknown heisenberg, most
+  likely a side effect caused by a dependency, conducting effort to discover a
+  problem, just because you are against lockfiles.
 tags:
 - blog
 project: personal
