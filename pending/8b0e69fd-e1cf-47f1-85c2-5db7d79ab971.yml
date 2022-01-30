@@ -1,5 +1,16 @@
 summary: Write to https://github.com/dlang/dub/issues/1245
-notes: ""
+notes: |
+  I have very strong opinions about this and we should discuss this carefully.
+
+  I don't think this should be implemented at all. Let's please not follow other
+  package managers just because they do the same.
+
+  Lockfiles serves a clear purpose, reproduce an environment. Encouraging someone
+  to not use them, in libraries, leads to a lot of issues being created to
+  intentionally remove lock files, making people confuse about the purpose of it.
+  On libraries we should both test in a locked and a suitable different
+  environment (more commonly the latest, but supposedly any supported version,
+  according to the specified version range).
 tags:
 - dlang
 - dub
