@@ -1,0 +1,13 @@
+summary: Write to https://github.com/dlang/dub/issues/1245
+notes: ""
+tags:
+- dlang
+- dub
+project: contrib
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2022-01-30T02:01:27.280054958Z
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
