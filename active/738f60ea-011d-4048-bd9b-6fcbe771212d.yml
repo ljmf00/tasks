@@ -2,6 +2,12 @@ summary: Write about controversy around package managers lockfile
 notes: |
   # The controversy and misconception around package managers lockfile in libraries
 
+  **NOTE:** I'm making this beacause I feel like this should be clarified. I had
+  a lot of discussions where people were biased by other opinions, mostly due to
+  spreaded misconception about these files. I can update this later with a more
+  fundamented reason, if I see even more controversy on discussions I have in a
+  near future.
+
   A lot of package managers use a lockfile mechanism to reliably reproduce their
   packages across different environments. This mechanism is used when other
   environment build packages that do not use pinned dependency versions and end
@@ -37,9 +43,14 @@ notes: |
   GitHub automatically associate it as the real Linus Torvalds. So a user can
   easily create a security vulnerability, bump a patch version and change the
   commit hash on the lockfile accordingly, making it a poisoned environment,
-  without being too obvious. This can be easily fixed using GPG signatures. Linux
+  without being too obvious.
+
+  This can be easily fixed using GPG signatures. Linux
   releases, for example, are all signed by a group of trusted keys. That way we
   can trust that release tag by verifying the underlying signature.
+
+  Therefore commiting this files should be made and reviewed with caution, in a
+  trusted environment.
 
   ## You might say, why not pin the versions, instead?
 
