@@ -45,12 +45,17 @@ notes: |
   commit hash on the lockfile accordingly, making it a poisoned environment,
   without being too obvious.
 
-  This can be easily fixed using GPG signatures. Linux
-  releases, for example, are all signed by a group of trusted keys. That way we
-  can trust that release tag by verifying the underlying signature.
+  Another problems related to other external services can rise. The problematic
+  here is trusting the source and the underlying service, falling into accepting
+  changes that can't be easily verified by just looking at it. Should we trust
+  any commit comming from `github.com/torvalds/linux`? Yes, but apperently no.
 
-  Therefore commiting this files should be made and reviewed with caution, in a
-  trusted environment.
+  This can be mitigated using GPG signatures. Linux releases, for example, are
+  all signed by a group of trusted keys. That way we can trust that release tag
+  by verifying the underlying signature.
+
+  Therefore commiting this files should be made and reviewed with caution and in
+  a trusted environment.
 
   ## You might say, why not pin the versions, instead?
 
@@ -108,12 +113,14 @@ notes: |
   this is essential for the library developers to detect if an introduced
   change caused problems. Essentially, packages should test their environment
   against their supported version ranges and their locked reproducible
-  environment.
+  environment. Testing only one of those is wrong, and that is probably the root
+  of the misconception.
 
   Many other package managers does claim the same thing and it seems they justify
   themselves with each other claims. The worst part is the fact that some
-  maintainers decline including lockfiles in their projects, without thinking
-  logically about the problem and consequences.
+  maintainers decline including lockfiles in their projects and others create
+  pull requests/issues requesting to remove lockfiles, without thinking logically
+  about the problem and consequences, hence my frustration.
 
   ## Conclusion
 
