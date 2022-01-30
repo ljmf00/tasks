@@ -122,6 +122,53 @@ notes: |
   pull requests/issues requesting to remove lockfiles, without thinking logically
   about the problem and consequences, hence my frustration.
 
+  Fortunately, there is some clarification articles out there, including
+  [yarn](https://classic.yarnpkg.com/blog/2016/11/24/lockfiles-for-all/) blog
+  post and [Shalvah's blog
+  post](https://blog.shalvah.me/posts/understanding-lockfiles) that you should
+  check out, although there is a lot of bold claims that doesn't make sense.
+
+  From
+  [sindresorhus/ama/issues/479](https://github.com/sindresorhus/ama/issues/479#issuecomment-309440715):
+
+  > The lockfile defeats the whole purpose of the caret ^ that is the default
+  > save behavior. And it prevents us from getting security patches immediately,
+  > which is insane. There are more good updates than bad updates, so it does
+  > more harm than good. The idea that it protects us from malicious code is
+  > silly because there's no way in hell that people are actually auditing the
+  > entire dependency graph when they do finally get around to updating the
+  > lockfile. It's a fallacy that leads to a false sense of security.
+
+  Lockfiles are NOT there to prevent security issues, they are there to reproduce
+  environments. If you rely on lockfiles for security, you are doing it wrong.
+  Nothing prevents you from ignoring the lockfile as a user and you should patch
+  upstream if there is a security issue on some dependency. As a developer you
+  might want to proactively update that file, but also keep them to reproduce
+  your application/library.
+
+  From [dev.to, When not to use
+  package-lock.json](https://dev.to/gajus/stop-using-package-lock-json-or-yarn-lock-3ddi):
+
+  > The origin of this misuse is NPM documentation. It should instead explain
+  > that package-lock.json should only be committed to the source code version
+  > control when the project is not a dependency of other projects, i.e.
+  > package-lock.json should only by committed to source code version control for
+  > top-level projects (programs consumed by the end user, not other programs).
+  >
+  > [...]
+  >
+  > I would support a variation of package-lock.json if it could somehow only
+  > apply to devDependencies. I can see some (albeit small and with tradeoffs)
+  > benefit to wanting your development environment not break if there is a
+  > broken release among your dependencies.
+
+  Testing only with lockfiles is wrong, as well as living in the bleeding edge
+  world by testing only with the latest version. You should test both or ideally,
+  all the versions your manifest file supports. Only covering `devDependencies`
+  is also a claim that makes zero sense. Normal `dependencies` may not be part of
+  the build process but of the execution/runtime part of your
+  application/library, and should indeed be reproducible.
+
   ## Conclusion
 
   The conclusion is simple, please consider using a lockfile. Don't assume that
