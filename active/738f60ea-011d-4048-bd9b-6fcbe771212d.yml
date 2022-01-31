@@ -2,15 +2,15 @@ summary: Write about controversy around package managers lockfile
 notes: |
   # The controversy and misconception around package managers lockfile in libraries
 
-  **NOTE:** I'm making this beacause I feel like this should be clarified. I had
-  a lot of discussions where people were biased by other opinions, mostly due to
-  spreaded misconception about these files. I can update this later with a more
-  fundamented reason, if I see even more controversy on discussions I have in a
+  **NOTE:** I'm making this because I feel like this should be clarified. I had a
+  lot of discussions where people were biased by other opinions, mostly due to
+  spread misconceptions about these files. I can update this later with a more
+  fundamental reason if I see even more controversy on discussions I have in a
   near future.
 
   A lot of package managers use a lockfile mechanism to reliably reproduce their
   packages across different environments. This mechanism is used when other
-  environment build packages that do not use pinned dependency versions and end
+  environments build packages that do not use pinned dependency versions and end
   up using a modified version compatible with the version expression specified in
   the package manifest file.
 
@@ -25,50 +25,50 @@ notes: |
 
   One of the biggest advantages is to make deterministic dependency resolution.
   This way, package managers can more easily replicate the same builds on
-  different environments. With that you can also build your own package more
-  consistently. Those both help users and developers seeking for problems and can
-  decrease test suite failures on development.
+  different environments. With that, you can also build your own package more
+  consistently. Both help users and developers seeking problems and can decrease
+  test suite failures on development.
 
   ### Security risk
 
   It is straightforward to understand the advantages of a lockfile but some
-  people doesn't understand the _"disadvantages"_ and intentionally skip lockfiles
-  review, which is a tremendous bad idea, let me explain you why.
+  people don't understand the _" disadvantages"_ and intentionally skip lockfiles
+  review, which is a tremendously bad idea; let me explain to you why.
 
-  For example, GitHub has bad security issue related to detached references that
-  allows any user to create a fork of the repo and associate a commit to the
-  original repo. See the example of Linus Torvalds `linux` mirror with
+  For example, GitHub has a bad security issue related to detached references
+  that allow any user to create a fork of the repo and associate a commit to the
+  original repo. See the example of Linus Torvalds' `linux` mirror with
   [this](https://github.com/torvalds/linux/tree/8bcab0346d4fcf21b97046eb44db8cf37ddd6da0)
   commit. Because git obviously allows anyone to create commits with any email,
-  GitHub automatically associate it as the real Linus Torvalds. So a user can
+  GitHub automatically associates it as the real Linus Torvalds. So a user can
   easily create a security vulnerability, bump a patch version and change the
   commit hash on the lockfile accordingly, making it a poisoned environment,
   without being too obvious.
 
-  Another problems related to other external services can rise. The problematic
-  here is trusting the source and the underlying service, falling into accepting
+  Another problem related to other external services can rise. The problem here
+  is trusting the source and the underlying service, falling into accepting
   changes that can't be easily verified by just looking at it. Should we trust
-  any commit comming from `github.com/torvalds/linux`? Yes, but apperently no.
+  any commit coming from `github.com/torvalds/linux`? Yes, but apparently not.
 
   This can be mitigated using GPG signatures. Linux releases, for example, are
   all signed by a group of trusted keys. That way we can trust that release tag
   by verifying the underlying signature.
 
-  Therefore commiting this files should be made and reviewed with caution and in
-  a trusted environment.
+  Therefore committing these files should be made and reviewed with caution and
+  in a trusted environment.
 
   ## You might say, why not pin the versions, instead?
 
   Well, if [semantic versioning](https://semver.org/) standard is strictly
   followed by the package maintainers, breaking changes wouldn't be a big of a
-  deal, although, the package will always be different. In a real world
-  situation, breaking changes happens all the time, even if the intention is only
-  a bug fix. Sometimes things get out of control and because of the today's
-  systems complexity, regression bugs can easily happen.
+  deal, although, the package will always be different. In a real-world
+  situation, breaking changes happen all the time, even if the intention is only
+  a bug fix. Sometimes things get out of control and because of today's systems
+  complexity, regression bugs can easily happen.
 
-  However, by specifying a version range covering patches or minor versions is
-  more practically useful for a situation where the latest non-breakable version
-  is preferable.
+  However, specifying a version range covering patches or minor versions is more
+  practically useful for a situation where the latest non-breakable version is
+  preferable.
 
   Also, just pinning versions doesn't solve integrity issues and lockfiles does.
 
@@ -92,7 +92,7 @@ notes: |
   behind them, a strong philosophy about not including lockfiles for libraries.
   This is something I can't really understand, given the rationale.
 
-  For example, Rust package manager, Cargo, doesn't not generate lockfiles by
+  For example, the Rust package manager, Cargo, doesn't generate lockfiles by
   default for libraries:
 
   > This property is most desirable from applications and packages which are at
@@ -108,15 +108,15 @@ notes: |
   You can read more about this on "The Cargo Book",
   [here](https://doc.rust-lang.org/cargo/faq.html#why-do-binaries-have-cargolock-in-version-control-but-not-libraries).
 
-  The last sentence is just wrong. Libraries should indeed by deterministically
-  recompiled to ensure consistency. That might not be true for the end user, but
-  this is essential for the library developers to detect if an introduced
-  change caused problems. Essentially, packages should test their environment
-  against their supported version ranges and their locked reproducible
-  environment. Testing only one of those is wrong, and that is probably the root
-  of the misconception.
+  The last sentence is just wrong. Libraries should indeed be deterministically
+  recompiled to ensure consistency. That might not be true for the end-user, but
+  this is essential for the library developers to detect if an introduced change
+  caused problems. Essentially, packages should test their environment against
+  their supported version ranges and their locked reproducible environment.
+  Testing only one of those is wrong, and that is probably the root of the
+  misconception.
 
-  Many other package managers does claim the same thing and it seems they justify
+  Many other package managers do claim the same thing and it seems they justify
   themselves with each other claims. The worst part is the fact that some
   maintainers decline including lockfiles in their projects and others create
   pull requests/issues requesting to remove lockfiles, without thinking logically
@@ -126,7 +126,7 @@ notes: |
   [yarn](https://classic.yarnpkg.com/blog/2016/11/24/lockfiles-for-all/) blog
   post and [Shalvah's blog
   post](https://blog.shalvah.me/posts/understanding-lockfiles) that you should
-  check out, although there is a lot of bold claims that doesn't make sense.
+  check out, although there is a lot of bold claims that don't make sense.
 
   From
   [sindresorhus/ama/issues/479](https://github.com/sindresorhus/ama/issues/479#issuecomment-309440715):
@@ -172,12 +172,13 @@ notes: |
   ## Conclusion
 
   The conclusion is simple, please consider using a lockfile. Don't assume that
-  semantic versioning is followed strictly, because that is utopic. Also make
+  semantic versioning is followed strictly because that is utopic. Also, make
   your testsuite deterministic and wide to your dependency requirements. Someone
   from the outside will touch your library, possibly try to contribute and
-  complain about their testsuite failing due to an unknown heisenberg, most
-  likely a side effect caused by a dependency, conducting effort to discover a
-  problem, just because you are against lockfiles.
+  complain about their testsuite failing due to an unknown
+  [Heisenbug](https://ipfs.io/ipfs/bafkreigrsldz4g6eubx47ubp7qh7bqr4cd4copde35awdac3w6bwbt2lem),
+  most likely a side effect caused by a dependency, conducting an effort to
+  discover a problem, just because you are against lockfiles.
 tags:
 - blog
 project: personal
