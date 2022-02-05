@@ -1,5 +1,11 @@
 summary: Create SearXNG Tor load balancer
-notes: ""
+notes: |
+  http://4n53nafyi77iplnbrpmxnp3x4exbswwxigujaxy3b37fvr7bvlopxeyd.onion/
+  http://w5rl6wsd7mzj4bdkbuqvzidet5osdsm5jhg2f7nvfidakfq5exda5wid.onion/
+  http://searx3aolosaf3urwnhpynlhuokqsgz47si4pzz5hvb7uuzyjncl2tid.onion/
+
+  More Tor instances
+  [here](http://searxspbitokayvkhzhsnljde7rqmn7rvoga6e4waeub3h7ug3nghoad.onion/)
 tags: []
 project: personal
 priority: P2
