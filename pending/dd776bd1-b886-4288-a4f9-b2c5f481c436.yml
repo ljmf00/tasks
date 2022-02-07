@@ -1,0 +1,12 @@
+summary: Make a decent configuration to prevent IP leaking and seperate client for Tor-only connections
+notes: ""
+tags:
+- ipfs
+project: personal
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2022-02-07T02:39:27.770866111Z
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
