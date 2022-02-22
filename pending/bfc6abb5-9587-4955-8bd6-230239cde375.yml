@@ -1,5 +1,5 @@
 summary: Push branches (see notes)
-notes: ""
+notes: "dmd:\n\trm-buf-bufptr\n"
 tags:
 - dlang
 - dmd
