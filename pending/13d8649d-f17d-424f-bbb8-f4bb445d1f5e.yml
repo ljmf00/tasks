@@ -1,5 +1,6 @@
 summary: Check for mangled symbols
-notes: ""
+notes: |
+  _D3dmd7typesem12typeSemanticRCQBc5mtype4TypeKxSQBt7globals3LocPSQCk6dscope5ScopeZ11visitStructMFCQDrQCp10TypeStructZQDj
 tags:
 - gcc
 - libiberty
