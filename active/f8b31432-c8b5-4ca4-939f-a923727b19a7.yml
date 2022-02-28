@@ -1,5 +1,6 @@
 summary: 'Implement DIP1029: Add throw as Function Attribute'
-notes: ""
+notes: |
+  PR: https://github.com/dlang/dmd/pull/12934
 tags:
 - dlang
 - github
