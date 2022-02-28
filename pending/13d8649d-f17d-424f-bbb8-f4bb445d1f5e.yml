@@ -1,0 +1,13 @@
+summary: Check for mangled symbols
+notes: ""
+tags:
+- gcc
+- libiberty
+project: contrib
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2022-02-28T02:05:24.954041415Z
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
