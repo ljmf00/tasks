@@ -1,0 +1,12 @@
+summary: Make DW_FORM_data4 -> DW_FORM_sec_offset on DWARF4/5
+notes: ""
+tags:
+- dmd
+project: contrib
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2022-03-04T21:00:08.863437033Z
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
