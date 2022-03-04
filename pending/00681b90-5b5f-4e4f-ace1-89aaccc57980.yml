@@ -1,5 +1,15 @@
 summary: Add pre-commit
-notes: ""
+notes: |2+
+
+    - id: end-of-file-fixer
+    - id: mixed-line-ending
+    - id: check-json
+    - id: check-yaml
+    - id: check-xml
+    - id: check-merge-conflict
+    - id: check-executables-have-shebangs
+    - id: detect-private-key
+
 tags:
 - dmd
 project: contrib
