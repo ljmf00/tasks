@@ -1,5 +1,5 @@
 summary: Add pre-commit
-notes: |2+
+notes: |2
 
     - id: end-of-file-fixer
     - id: mixed-line-ending
@@ -10,6 +10,8 @@ notes: |2+
     - id: check-executables-have-shebangs
     - id: detect-private-key
 
+  schemas
+    - id: check-azure-pipelines
 tags:
 - dmd
 project: contrib
