@@ -1,5 +1,31 @@
 summary: 'From ground 0x00 to Hero: Memory'
-notes: ""
+notes: |+
+  # From ground 0x00 to Hero: Memory
+
+  This blog post explains briefly how memory works by explaining:
+  - How Random-access Memory (RAM) generically works
+  - How the computer hardware and the operating system manage the system memory
+  - How a _program_ organizes memory and how memory sections are mapped in the
+    process memory space
+  - How to allocate/reserve memory in different memory sections in C
+
+  ## Random-access Memory
+
+  DRAM sticks is one of the most common key components of a basic working
+  computer. DRAM (Dynamic Random-access Memory) is a type of random-access memory
+  where the computer primarily keeps information temporarily, such as information
+  about the running programs. In contrast to direct-access storage, random-access
+  memory can fetch and store content randomly in an almost constant time.
+
+  In order to be useful and easy to read and write into memory, RAM is
+  addressable, which means that every bit stored in a memory cell has _"a
+  location number"_ or an address. Commonly, memory is addressed in 8-bits (1
+  byte), which means that each RAM chip contains 8 memory cells to represent a
+  byte in memory.
+
+  **insert memory address scheme**
+
+
 tags:
 - blog
 project: personal
