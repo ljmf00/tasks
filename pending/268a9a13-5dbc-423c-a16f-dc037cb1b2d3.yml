@@ -1,6 +1,5 @@
 summary: Push branches
-notes: |
-  static-imm-backend
+notes: ""
 tags:
 - dmd
 - nointernet
