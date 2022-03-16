@@ -1,0 +1,12 @@
+summary: Report issue about DW_TAG_typedef and generated attribute
+notes: ""
+tags:
+- lldb
+project: llvm
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2022-03-16T17:02:49.263937923Z
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
