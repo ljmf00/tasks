@@ -1,5 +1,7 @@
 summary: Push branches
-notes: ""
+notes: |
+  proxy-important-discard
+  dlang-build-script
 tags:
 - nointernet
 project: ""
