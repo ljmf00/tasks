@@ -12,16 +12,18 @@ notes: |+
   ## Random-access Memory
 
   DRAM sticks is one of the most common key components of a basic working
-  computer. DRAM (Dynamic Random-access Memory) is a type of random-access memory
-  where the computer primarily keeps information temporarily, such as information
-  about the running programs. In contrast to direct-access storage, random-access
-  memory can fetch and store content randomly in an almost constant time.
+  computer. [DRAM (Dynamic Random-access
+  Memory)](https://ipfs.io/ipfs/bafkreicxgppoq6w3h7lawfgxhslvkjnqxm2wi5ixxkbo2igtgprf63szcy)
+  is a type of random-access memory where the computer primarily keeps
+  information temporarily, such as information about the running programs. In
+  contrast to direct-access storage, random-access memory can fetch and store
+  content randomly in an almost constant time.
 
   In order to be useful and easy to read and write into memory, RAM is
   addressable, which means that every bit stored in a memory cell has _"a
   location number"_ or an address. Commonly, memory is addressed in 8-bits (1
-  byte), which means that each RAM chip contains 8 memory cells to represent a
-  byte in memory.
+  byte), which means that each RAM stick typically contains 8 memory cells to
+  represent a byte in memory.
 
   **insert memory address scheme**
 
