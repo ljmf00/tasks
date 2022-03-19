@@ -13,7 +13,7 @@ notes: |+
 
   DRAM sticks is one of the most common key components of a basic working
   computer. [DRAM (Dynamic Random-access
-  Memory)](https://ipfs.io/ipfs/bafkreicxgppoq6w3h7lawfgxhslvkjnqxm2wi5ixxkbo2igtgprf63szcy)
+  Memory)](https://bafybeiaysi4s6lnjev27ln5icwm6tueaw2vdykrtjkwiphwekaywqhcjze.ipfs.dweb.link/wiki/Dynamic_random-access_memory)
   is a type of random-access memory where the computer primarily keeps
   information temporarily, such as information about the running programs. In
   contrast to direct-access storage, random-access memory can fetch and store
@@ -27,6 +27,37 @@ notes: |+
 
   **insert memory address scheme**
 
+  In the figure above, we can see the content addressed in bytes. For example,
+  the address `100` points to `a` in memory, the address `101` points to `b` and
+  so on and so forth.
+
+  ### A bit of binary
+
+  As you can probably tell, `a` glyph can't just be "drawn" in memory and
+  instead, we stored a numeric representation of that character, using either
+  ASCII, UTF-8 or other representation. The ASCII table is the most basic one and
+  extensively used for basic letters. UTF-8 and UTF-16 is more widely used to
+  represent other glyphs not used in, e.g. English alphabet.
+
+  For us to understand how this works, we need to understand a bit about how
+  binary representation works.
+
+  Let's say that `'a'` in ASCII is 97 in decimal. To represent it in binary, we
+  do the following:
+
+  **insert 97 in binary table**
+
+  If you look at the table above, you can see that there is some bit's with `1`
+  and some with `0`. This means that if you sum the power of `2` of each index
+  with a `1` you can have the number in decimal. To convert to binary, you do
+  pretty much the reverse, you try to find from higher to lower, if the number
+  _fits_.
+
+  In this example:
+
+  **insert calculations of 97 from power of 2**
+
+  ## Interaction with the Operating System
 
 tags:
 - blog
