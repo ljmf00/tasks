@@ -2,7 +2,7 @@ summary: Compare hash algorithm performance
 notes: |
   # Implementations
 
-  ## murmur2 tweaked
+  ## murmur2 tweaked (current)
 
   ```
   ===> multitime results
