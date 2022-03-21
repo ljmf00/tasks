@@ -1,5 +1,6 @@
 summary: Add BIMI record with SVG on IPFS
-notes: ""
+notes: |
+  See https://mailtrap.io/blog/bimi-email/
 tags:
 - domain
 project: personal
