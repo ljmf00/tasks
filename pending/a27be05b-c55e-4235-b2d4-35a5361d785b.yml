@@ -1,11 +1,5 @@
 summary: Push branches
-notes: |
-  refactor-dwarf-2
-  refactor-dwarf-3
-
-  ---
-
-  ./dmd/test/fail_compilation/fail104.d
+notes: "refactor-dwarf-2\nrefactor-dwarf-3\n\n---\n\n./dmd/test/fail_compilation/fail104.d\n\n```\noverride Dsymbol search(const ref Loc loc, Identifier ident, int flags = SearchLocalsOnly)\n{\n//printf(\"%s.Import.search(ident = '%s', flags = x%x)\\n\", toChars(), ident.toChars(), flags);\nif (!pkg)\n{\n    if (!load(null))\n    {\n\tmod.importAll(null);\n\tmod.dsymbolSemantic(null);\n    }\n\n    return null;\n}\n// Forward it to the package/module\nreturn pkg.search(loc, ident, flags);\n}\n```\n"
 tags:
 - nointernet
 project: personal
