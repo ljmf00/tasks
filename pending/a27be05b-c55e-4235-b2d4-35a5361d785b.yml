@@ -2,6 +2,10 @@ summary: Push branches
 notes: |
   refactor-dwarf-2
   refactor-dwarf-3
+
+  ---
+
+  ./dmd/test/fail_compilation/fail104.d
 tags:
 - nointernet
 project: personal
