@@ -1,0 +1,13 @@
+summary: Add support for os.name reachability checks
+notes: ""
+tags:
+- mypy
+- python
+project: contrib
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2022-04-01T00:47:40.303568056+01:00
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
