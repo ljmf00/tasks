@@ -1,5 +1,6 @@
 summary: Add support for os.name reachability checks
-notes: ""
+notes: |
+  Reference: https://github.com/python/mypy/commit/e602da811e300e70527c879e8ea7100ec66486b0
 tags:
 - mypy
 - python
