@@ -1,9 +1,9 @@
-summary: P! Remove SYSCONFDIR.imp
+summary: Remove SYSCONFDIR.imp
 notes: ""
 tags:
 - dmdlint
 project: epslon-dlang
-priority: P2
+priority: P1
 delegatedto: ""
 subtasks: []
 dependencies: []
