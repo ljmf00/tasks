@@ -1,4 +1,4 @@
-summary: Autoconfigure Tor exit node
+summary: Autoconfigure Tor exit node with Ansible
 notes: ""
 tags: []
 project: personal
