@@ -1,31 +1,17 @@
 summary: Add more playlists
 notes: |
   ```
-  https://open.spotify.com/playlist/6CtZlhRc5HkT9rbDY8W69a?si=1848aa7a08f0458d
-  chicos-musical-mess-4
+  kitty ./prepare-pin.sh 'https://open.spotify.com/playlist/6CtZlhRc5HkT9rbDY8W69a?si=1848aa7a08f0458d' && mv store/metadata/temp/ store/metadata/chicos-musical-mess-4
+  kitty ./prepare-pin.sh 'https://open.spotify.com/playlist/6r9u8yYRebOcwO38cLvzSn?si=e7be1fb1a1ee4a32' && mv store/metadata/temp/ store/metadata/chicos-musical-mess-5
+  kitty ./prepare-pin.sh 'https://open.spotify.com/playlist/2ApIN6eEYjvJSPG2CCZD4D?si=83f7b64cda3a4130' && mv store/metadata/temp/ store/metadata/chicos-musical-mess-7
+  kitty ./prepare-pin.sh 'https://open.spotify.com/playlist/3M5KdfsshNgkMYqn8Bznzj?si=56a649bae3804ec6' && mv store/metadata/temp/ store/metadata/chicos-musical-mess-8
+  kitty ./prepare-pin.sh 'https://open.spotify.com/playlist/6ozAe44QZEAeTGJZBU0atr?si=d3f897fc881843a3' && mv store/metadata/temp/ store/metadata/puro-portugues-musica-portuguesa
+  kitty ./prepare-pin.sh 'https://open.spotify.com/album/4OGuOK0282wh1HCDJhlRZ3?si=6XSBb89NS2OiBgz7oO5jug' && mv store/metadata/temp/ store/metadata/monstercat-uncaged-vol-9
+  kitty ./prepare-pin.sh 'https://open.spotify.com/album/0GWExibqmL62DEVNkfNKhx?si=H36dr2VwQhClCSrAWppZ0w' && mv store/metadata/temp/ store/metadata/monstercat-uncaged-vol-8
+  kitty ./prepare-pin.sh 'https://open.spotify.com/album/78o8wWvdzK44iqcNCZIVmn?si=HsvCuM9VRYyhd6lANFETWg' && mv store/metadata/temp/ store/metadata/monstercat-uncaged-vol-7
+  kitty ./prepare-pin.sh 'https://open.spotify.com/album/5JpLQVR3MzUzBMAaWHEc6p?si=1fZ062ghR2yY_2zohJ1cTw' && mv store/metadata/temp/ store/metadata/monstercat-10-year-anniversary
 
-  https://open.spotify.com/playlist/6r9u8yYRebOcwO38cLvzSn?si=e7be1fb1a1ee4a32
-  chicos-musical-mess-5
-
-  https://open.spotify.com/playlist/2ApIN6eEYjvJSPG2CCZD4D?si=83f7b64cda3a4130
-  chicos-musical-mess-7
-
-  https://open.spotify.com/playlist/3M5KdfsshNgkMYqn8Bznzj?si=56a649bae3804ec6
-  chicos-musical-mess-8
-
-  https://open.spotify.com/playlist/6ozAe44QZEAeTGJZBU0atr?si=d3f897fc881843a3
-  puro-portugues-musica-portuguesa
-
-  https://open.spotify.com/album/4OGuOK0282wh1HCDJhlRZ3?si=6XSBb89NS2OiBgz7oO5jug
-  monstercat-uncaged-vol-9
-
-  https://open.spotify.com/album/0GWExibqmL62DEVNkfNKhx?si=H36dr2VwQhClCSrAWppZ0w
-  monstercat-uncaged-vol-8
-
-  https://open.spotify.com/album/78o8wWvdzK44iqcNCZIVmn?si=HsvCuM9VRYyhd6lANFETWg
-  monstercat-uncaged-vol-7
-
-  https://open.spotify.com/album/5JpLQVR3MzUzBMAaWHEc6p?si=1fZ062ghR2yY_2zohJ1cTw
+  kitty ./prepare-pin.sh '' && mv store/metadata/temp/ store/metadata/
   ```
 tags:
 - musiclist
