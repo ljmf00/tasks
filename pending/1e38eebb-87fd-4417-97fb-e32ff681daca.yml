@@ -1,17 +1,6 @@
 summary: Add more playlists
 notes: |
   ```
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/78o8wWvdzK44iqcNCZIVmn?si=HsvCuM9VRYyhd6lANFETWg' && mv store/metadata/temp/ store/metadata/monstercat-uncaged-vol-7
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/0GWExibqmL62DEVNkfNKhx?si=H36dr2VwQhClCSrAWppZ0w' && mv store/metadata/temp/ store/metadata/monstercat-uncaged-vol-8
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/4OGuOK0282wh1HCDJhlRZ3?si=6XSBb89NS2OiBgz7oO5jug' && mv store/metadata/temp/ store/metadata/monstercat-uncaged-vol-9
-
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/7qzURREdjo1w2mKBGGcDkZ?si=CDDSkGdaTwefj9onoYKGzw' && mv store/metadata/temp/ store/metadata/monstercat-instinct-vol-1
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/0o2Y0VeJEZ72wA6ug0yN8X?si=CBa6jLJRTZOglazTHvXubQ' && mv store/metadata/temp/ store/metadata/monstercat-instinct-vol-2
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/4zebClfjU7LVifwhE7CRpd?si=_PlgygVQT32gyODD2-p3cg' && mv store/metadata/temp/ store/metadata/monstercat-instinct-vol-3
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/088ajb0S5AgFOfIWsu9luc?si=7BBw6T_VRcSR46Ll2FlDmA' && mv store/metadata/temp/ store/metadata/monstercat-instinct-vol-4
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/1G581b7hODjE3txrb877G0?si=a2r2MjXhQNe_BwEV6kTPtg' && mv store/metadata/temp/ store/metadata/monstercat-instinct-vol-5
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/15RlA5XEn2mgSYXFTzUXhu?si=6wFoEzZtSk64X5eLN6YuAg' && mv store/metadata/temp/ store/metadata/monstercat-instinct-vol-6
-
   kitty ./prepare-pin.sh 'https://open.spotify.com/album/1ZZVuYOvJXlQapbY5vJxlQ?si=30xAoKCgRgSIh7i-EdVO7g' && mv store/metadata/temp/ store/metadata/monstercat-best-of-2011
   kitty ./prepare-pin.sh 'https://open.spotify.com/album/3pMsvW38NljpPaOy8GkdyH?si=9AwLTNSsTAqL650QyCuOtw' && mv store/metadata/temp/ store/metadata/monstercat-best-of-2012
   kitty ./prepare-pin.sh 'https://open.spotify.com/album/76cX37uc6ebY9Ie34sbpBW?si=Sw0johcpSo22J0458QEgoA' && mv store/metadata/temp/ store/metadata/monstercat-best-of-2013
