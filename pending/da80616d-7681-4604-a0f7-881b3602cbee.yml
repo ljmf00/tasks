@@ -1,4 +1,4 @@
-summary: Add a firewall and setup a VPN
+summary: Add a firewall role on Ansible
 notes: ""
 tags:
 - infrastructure
