@@ -1,0 +1,14 @@
+summary: Fix 'https://issues.dlang.org/show_bug.cgi?id=16508'
+notes: ""
+tags:
+- dlang
+- dmd
+- druntime
+project: contrib
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2022-04-29T02:14:20.59388074+01:00
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
