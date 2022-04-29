@@ -1,0 +1,13 @@
+summary: Remove exit node domain
+notes: ""
+tags:
+- exit_node
+- tor
+project: personal
+priority: P0
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2022-04-30T00:51:30.917888353+01:00
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
