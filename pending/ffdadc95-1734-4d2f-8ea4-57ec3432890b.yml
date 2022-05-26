@@ -1,6 +1,19 @@
 summary: D by example
-notes: |2+
-
+notes: |
+  - Hello world
+  - Functions
+  - Variables
+  - Inline asm
+  - DDoc
+  - Templates
+  - Modules, import
+  - Attributes
+    * `deprecate`
+    * `align`
+    * `extern(<language>)`
+    * `@safe/@trusted/@system`
+    * `const/immutable`
+  - Static and dynamic arrays
 tags:
 - blog
 - dlang
