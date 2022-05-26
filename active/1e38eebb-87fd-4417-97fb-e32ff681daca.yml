@@ -1,16 +1,6 @@
 summary: Add more playlists
 notes: |
   ```
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/1ZZVuYOvJXlQapbY5vJxlQ?si=30xAoKCgRgSIh7i-EdVO7g' && mv store/metadata/temp/ store/metadata/monstercat-best-of-2011
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/3pMsvW38NljpPaOy8GkdyH?si=9AwLTNSsTAqL650QyCuOtw' && mv store/metadata/temp/ store/metadata/monstercat-best-of-2012
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/76cX37uc6ebY9Ie34sbpBW?si=Sw0johcpSo22J0458QEgoA' && mv store/metadata/temp/ store/metadata/monstercat-best-of-2013
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/3qpZhKoDV1Ku4XxJKD98XK?si=q7AZSsNcQe6GxRpHWZl8PA' && mv store/metadata/temp/ store/metadata/monstercat-best-of-2014
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/3AyUEbDJw533TIUwo6hwlE?si=AQzSmT5xTlaYHgcVqho1fQ' && mv store/metadata/temp/ store/metadata/monstercat-best-of-2015
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/52hpmORCVMbkCf4fyNTkzc?si=PWYJmICkROqAEzyVO1PxhQ' && mv store/metadata/temp/ store/metadata/monstercat-best-of-2016
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/1DCcRg5yXFDHZS2AmvxKki?si=twdArLx4RWWpNdK-Y3fn0g' && mv store/metadata/temp/ store/metadata/monstercat-best-of-2017
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/21F2ejaNXyZrXDdRK01nCC?si=KpZHxuAwR1S_4FKUMBJAfw' && mv store/metadata/temp/ store/metadata/monstercat-best-of-2018
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/3R0nDAP8WiMSPPWP28O5vk?si=SMjkn-VYRn61wIz93sKuKQ' && mv store/metadata/temp/ store/metadata/monstercat-best-of-2019
-
   kitty ./prepare-pin.sh 'https://open.spotify.com/album/2eEc92XtKZ2NgXYtNJNfE1?si=Y1lz6If9QgiWOjb110JaOA' && mv store/metadata/temp/ store/metadata/monstercat-3-year-anniversary
   kitty ./prepare-pin.sh 'https://open.spotify.com/album/1FF07ue5fJ3LVIQmhuQs0s?si=-vS6m1wYS7WkPjfDX4PfGQ' && mv store/metadata/temp/ store/metadata/monstercat-5-year-anniversary
   kitty ./prepare-pin.sh 'https://open.spotify.com/album/4RAB7aZN4MdBP9sujb2Vkk?si=SpD_q6TDSsmROR2L9Mr1QA' && mv store/metadata/temp/ store/metadata/monstercat-8-year-anniversary
