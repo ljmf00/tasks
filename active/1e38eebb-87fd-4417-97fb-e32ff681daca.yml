@@ -1,38 +1,6 @@
 summary: Add more playlists
 notes: |
   ```
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/2eEc92XtKZ2NgXYtNJNfE1?si=Y1lz6If9QgiWOjb110JaOA' && mv store/metadata/temp/ store/metadata/monstercat-3-year-anniversary
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/1FF07ue5fJ3LVIQmhuQs0s?si=-vS6m1wYS7WkPjfDX4PfGQ' && mv store/metadata/temp/ store/metadata/monstercat-5-year-anniversary
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/4RAB7aZN4MdBP9sujb2Vkk?si=SpD_q6TDSsmROR2L9Mr1QA' && mv store/metadata/temp/ store/metadata/monstercat-8-year-anniversary
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/2Xb3b7baDvH70Gb98zYkVc?si=Q9Po--VIQuOfwtZSfXD1Iw' && mv store/metadata/temp/ store/metadata/monstercat-9-year-anniversary
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/5JpLQVR3MzUzBMAaWHEc6p?si=1fZ062ghR2yY_2zohJ1cTw' && mv store/metadata/temp/ store/metadata/monstercat-10-year-anniversary
-
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/1tug0tdqpXDnWAosTGU6fS?si=k_jsSq8rTZyJOk0PZpOBHQ' && mv store/metadata/temp/ store/metadata/rocket-league-x-monstercat-legacy
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/0JDhD4s5rqkIrP2TjroNxH?si=yLA4O2ROSgyyqBOcTf3Zbg' && mv store/metadata/temp/ store/metadata/rocket-league-x-monstercat-radical-summer
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/0udMG3O5DfUssZGbp6uhyY?si=Snfmv4ykQoeYE3mwtpioqQ' && mv store/metadata/temp/ store/metadata/rocket-league-x-monstercat-vol-6
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/2FOClS4wDCKy0XowlOgsQM?si=JeLSCcKgTkmQ4K5VtWiKng' && mv store/metadata/temp/ store/metadata/rocket-league-x-monstercat-vol-7
-
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/7cQ5mljCPyKXE78KM1iYma?si=KBW4NZ0VT6ekH5XNq8S2Ow' && mv store/metadata/temp/ store/metadata/monstercat-best-of-trap
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/3UhoARGPADEAXis0IHp9SH?si=6lvuFQPaQFW7eAOyceuq2Q' && mv store/metadata/temp/ store/metadata/monstercat-best-of-house
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/7l2llgGWORber77VJq83vP?si=-EEPvWmBTQSB-dbiMDg_Dw' && mv store/metadata/temp/ store/metadata/monstercat-best-of-future-bass
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/2DS70db3aJziKQvP7alq0a?si=eDDwuZ2vRt2NmBOBZblNCg' && mv store/metadata/temp/ store/metadata/monstercat-best-of-electronic
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/6xbk41zvOeh1OlHppOGRQY?si=50dnXiiWRfSvh516OJgRsQ' && mv store/metadata/temp/ store/metadata/monstercat-best-of-dubstep
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/1Yzdv4ELcFNVAQwpr0tHCq?si=v_azNBwoRjutgI4I-AOFlQ' && mv store/metadata/temp/ store/metadata/monstercat-best-of-dnb-and-drumstep
-
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/7Lkl3C8TqR9glMpRBcFkhM?si=O-NuaVrhTaCh1TYAQYuFUA' && mv store/metadata/temp/ store/metadata/monstercat-best-of-house-vol-1
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/1F5RnHerrK8DE0sCme7zpS?si=oCXvAFLPRkqBZv1k72jATw' && mv store/metadata/temp/ store/metadata/monstercat-best-of-electronic-music-vol-1
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/2qvP9VmmWIWOiLF7QLFcrZ?si=pkwydZSbRF-baVpB2VaG7Q' && mv store/metadata/temp/ store/metadata/monstercat-best-of-electro-vol-1
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/0mTEdUKvyhPzS8iXvTXvIc?si=ETxuMDgsS7OPB8C4hQcXMw' && mv store/metadata/temp/ store/metadata/monstercat-best-of-dubstep-vol-1
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/4JYbUTzx0J9WNof9elUhL3?si=Ez0OQ7fYQiOl_VDE2JcuIg' && mv store/metadata/temp/ store/metadata/monstercat-best-of-electro-vol-2
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/7rx7ZqO87Avkd5Gr56Azqr?si=5KGF3OgVSjubXi2DvK8yog' && mv store/metadata/temp/ store/metadata/monstercat-best-of-dubstep-vol-2
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/5m9N5G6dcD31Vkix8krIYR?si=FH0gaailQLy66FhbOf5Xhg' && mv store/metadata/temp/ store/metadata/monstercat-best-of-dnb-and-drumstep-vol-1
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/3b9V2YnvblsjJIbET5QZQ4?si=duVf6ofKQuWIHHnqbWTktA' && mv store/metadata/temp/ store/metadata/monstercat-best-of-dnb-and-drumstep-vol-2
-
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/3LOGc2Vj5XEGTv3OFE55LQ?si=joFI5UVOSZKhTHYAEwImjw' && mv store/metadata/temp/ store/metadata/monstercat-holiday-hits
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/3ikJrt87nqabYJxp7qYvYy?si=bY7r7kcHTzySyNBv1cCGYw' && mv store/metadata/temp/ store/metadata/monstercat-christmas-album-2012
-
-  kitty ./prepare-pin.sh 'https://open.spotify.com/album/26Fb4hs1Hadb6XXkH5bzYj?si=txNOePRoTE2GvM5nNcFZNw' && mv store/metadata/temp/ store/metadata/monstercat-trick-or-treat
-
   kitty ./prepare-pin.sh '' && mv store/metadata/temp/ store/metadata/
   ```
 tags:
