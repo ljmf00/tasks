@@ -1,0 +1,12 @@
+summary: Optimize Linkage switch https://github.com/llvm/llvm-project/commit/c1e52c7aef8903650b9e92219fb597bcdfcdbd8f
+notes: ""
+tags:
+- llvm
+project: contrib
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2022-06-06T14:26:56.466828982+01:00
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
