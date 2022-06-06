@@ -1,0 +1,12 @@
+summary: Check if S_ATTR_DEBUG macos hack is still needed
+notes: ""
+tags:
+- dwarf
+project: dlang
+priority: P2
+delegatedto: ""
+subtasks: []
+dependencies: []
+created: 2022-06-06T14:20:29.90828939+01:00
+resolved: 0001-01-01T00:00:00Z
+due: 0001-01-01T00:00:00Z
